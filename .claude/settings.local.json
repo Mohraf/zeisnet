@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(node --version)",
+      "PowerShell(npm --version)",
+      "PowerShell(npm install next react react-dom lucide-react)",
+      "PowerShell(npm install -D typescript @types/node @types/react @types/react-dom tailwindcss @tailwindcss/postcss postcss)",
+      "WebFetch(domain:zeisnet.com)",
+      "PowerShell(npm run build)",
+      "PowerShell(npm install -D typescript@^5)",
+      "PowerShell(npx tsc --version)",
+      "PowerShell(npm run start)",
+      "PowerShell($routes = @\\('/', '/services', '/capacity-building', '/packages', '/contact'\\); foreach \\($r in $routes\\) { $ok = $false; for \\($i = 0; $i -lt 15; $i++\\) { try { $resp = Invoke-WebRequest -Uri \"http://localhost:3000$r\" -UseBasicParsing -TimeoutSec 5; Write-Output \"$r -> $\\($resp.StatusCode\\) \\($\\([math]::Round\\($resp.RawContentLength/1024\\)\\)KB\\)\"; $ok = $true; break } catch { Start-Sleep -Seconds 1 } }; if \\(-not $ok\\) { Write-Output \"$r -> FAILED\" } })",
+      "PowerShell($ok = $false; for \\($i = 0; $i -lt 20; $i++\\) { try { $home_ = Invoke-WebRequest -Uri \"http://localhost:3000/\" -UseBasicParsing -TimeoutSec 5; $ok = $true; break } catch { Start-Sleep -Seconds 1 } }; if \\(-not $ok\\) { Write-Output \"SERVER NOT UP\"; exit 1 }; $html = $home_.Content; Write-Output \"--- geo/meta checks \\(home\\) ---\"; foreach \\($needle in @\\('geo.region', 'geo.position', 'ICBM', 'application/ld+json', 'LocalBusiness', 'canonical', 'og:image', 'twitter:card', 'GeoCoordinates'\\)\\) { $found = $html.Contains\\($needle\\); Write-Output \"$needle : $found\" }; Write-Output \"--- robots.txt ---\"; \\(Invoke-WebRequest -Uri \"http://localhost:3000/robots.txt\" -UseBasicParsing\\).Content; Write-Output \"--- sitemap.xml \\(first 600 chars\\) ---\"; \\(Invoke-WebRequest -Uri \"http://localhost:3000/sitemap.xml\" -UseBasicParsing\\).Content.Substring\\(0, 600\\))",
+      "PowerShell($conns = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue; if \\($conns\\) { $conns | Select-Object -ExpandProperty OwningProcess -Unique | ForEach-Object { Stop-Process -Id $_ -Force -Confirm:$false; Write-Output \"Killed PID $_\" } } else { Write-Output \"Port 3000 already free\" })",
+      "PowerShell(Get-ChildItem out | Select-Object Name; Write-Output \"---\"; Get-ChildItem out -Recurse -File | Measure-Object -Property Length -Sum | ForEach-Object { \"Total: $\\($_.Count\\) files, $\\([math]::Round\\($_.Sum/1MB,1\\)\\) MB\" }; Write-Output \"---\"; Test-Path out\\\\.htaccess; Test-Path out\\\\services\\\\index.html; Test-Path out\\\\404.html; Test-Path out\\\\sitemap.xml; Test-Path out\\\\icon; Test-Path out\\\\opengraph-image)",
+      "PowerShell(Remove-Item \"$PWD\\\\zeisnet-site.zip\" -Force -Confirm:$false)",
+      "Bash(npx tsc *)",
+      "WebFetch(domain:www.google.com)",
+      "WebSearch"
+    ]
+  }
+}

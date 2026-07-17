@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Zeisnet Design Tokens                                              */
+/* ------------------------------------------------------------------ */
+
+@theme {
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand — deep night navy surfaces */
+  --color-night-950: #050a16;
+  --color-night-900: #0a1122;
+  --color-night-800: #0f1a33;
+  --color-night-700: #16244a;
+
+  /* Brand — electric blue primary */
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dbe7fe;
+  --color-brand-200: #bfd5fe;
+  --color-brand-300: #93b8fd;
+  --color-brand-400: #6093fa;
+  --color-brand-500: #3b6ef6;
+  --color-brand-600: #2554eb;
+  --color-brand-700: #1d41d8;
+  --color-brand-800: #1e37af;
+  --color-brand-900: #1e338a;
+  --color-brand-950: #172054;
+
+  /* Brand — cyan accent */
+  --color-accent-300: #67e8f9;
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+  --color-accent-600: #0891b2;
+
+  /* Motion */
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+  --animate-marquee: marquee 36s linear infinite;
+  --animate-orbit: orbit 24s linear infinite;
+  --animate-pulse-ring: pulse-ring 3.2s ease-out infinite;
+  --animate-dash: dash 4s linear infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white font-sans text-slate-600 antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  @apply bg-brand-600 text-white;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable composition classes                                       */
+/* ------------------------------------------------------------------ */
+
+/* Headline accent text (flat, single-colour) */
+.text-gradient {
+  @apply text-accent-400;
+}
+
+.text-gradient-dark {
+  @apply text-brand-600;
+}
+
+/* Glassmorphism surface (for use on dark sections) */
+.glass {
+  @apply border border-white/10 bg-white/[0.06] backdrop-blur-xl;
+}
+
+/* Faint blueprint grid overlay for dark sections */
+.bg-grid-dark {
+  background-image: linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.bg-grid-light {
+  background-image: linear-gradient(to right, rgb(15 26 51 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(15 26 51 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Scroll-reveal animation (driven by components/reveal.tsx) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-float,
+  .animate-float-slow,
+  .animate-marquee,
+  .animate-orbit,
+  .animate-pulse-ring,
+  .animate-dash {
+    animation: none !important;
+  }
+}
