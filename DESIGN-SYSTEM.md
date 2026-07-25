@@ -121,7 +121,7 @@ Timing: 300ms UI transitions, 700ms reveals, `cubic-bezier(0.22,1,0.36,1)`.
 Alternating dark/light bands for visual contrast:
 `dark hero → white trust bar → slate-50 → night-950 → white → gradient band → slate-50 → night-900 → night-950 CTA → footer`.
 
-Textures: `.bg-grid-dark` / `.bg-grid-light` blueprint grids; oversized `blur-3xl` gradient orbs for depth.
+Textures: oversized `blur-3xl` gradient orbs provide depth on dark sections (the blueprint grid overlays were removed). The home hero fills the viewport (`lg:min-h-[100svh]`) and centres its content on desktop.
 
 ## 10. Reusable components
 

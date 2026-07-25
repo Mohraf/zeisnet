@@ -14,14 +14,11 @@ import {
   Eraser,
   LockKeyhole,
   MonitorSmartphone,
-  SearchCheck,
-  Map,
-  Hammer,
-  LifeBuoy,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PageHero } from "@/components/page-hero";
+import { HowItWorks } from "@/components/how-it-works";
 import { CtaSection } from "@/components/cta-section";
 import { Faq } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
@@ -193,25 +190,25 @@ const faqs = [
 
 const process = [
   {
-    icon: SearchCheck,
+    iconName: "consult",
     step: "01",
     title: "Discover",
     description: "We listen first — understanding your goals, systems and pain points before proposing anything.",
   },
   {
-    icon: Map,
+    iconName: "plan",
     step: "02",
     title: "Plan",
     description: "You get a clear scope, timeline and fixed quote. No jargon, no hidden costs.",
   },
   {
-    icon: Hammer,
+    iconName: "deploy",
     step: "03",
     title: "Deliver",
     description: "Certified engineers implement with minimal disruption to your day-to-day operations.",
   },
   {
-    icon: LifeBuoy,
+    iconName: "support",
     step: "04",
     title: "Support",
     description: "We stay with you — monitoring, maintaining and improving long after go-live.",
@@ -290,13 +287,11 @@ export default function ServicesPage() {
       </section>
 
       {/* ===================== SPECIALIST RESCUE STRIP ==================== */}
-      <section className="relative overflow-hidden bg-night-950 py-24">
-        <div className="bg-grid-dark absolute inset-0" aria-hidden />
-        <div className="absolute left-1/3 top-[-30%] h-96 w-96 rounded-full bg-brand-600/20 blur-3xl" aria-hidden />
+      <section className="relative overflow-hidden bg-white py-24">
+        <div className="absolute left-1/3 top-[-30%] h-96 w-96 rounded-full bg-brand-200/30 blur-3xl" aria-hidden />
 
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
-            tone="dark"
             eyebrow="Specialist services"
             title="When something goes wrong, we make it right"
             description="Emergency and end-of-life services handled with speed, discretion and certified processes."
@@ -305,48 +300,33 @@ export default function ServicesPage() {
             {specialties.map((item, i) => (
               <div
                 key={item.title}
-                className="glass rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40 hover:bg-white/[0.09]"
+                className="soft-card group rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1"
                 data-reveal
                 style={delay(i * 90)}
               >
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-500/20 text-accent-300">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-600 transition-colors duration-300 group-hover:bg-brand-600 group-hover:text-white">
                   <item.icon className="h-5 w-5" aria-hidden />
                 </span>
-                <h3 className="mt-5 font-display text-lg font-bold text-white">{item.title}</h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-slate-400">{item.description}</p>
+                <h3 className="mt-5 font-display text-lg font-bold text-night-900">{item.title}</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-slate-600">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ============================ PROCESS ============================= */}
-      <section className="bg-white py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <SectionHeading
-            eyebrow="How we work"
-            title="A simple process, from first call to long-term care"
-            description="Every engagement follows the same four steps — so you always know exactly where things stand."
-          />
-
-          <ol className="relative mt-16 grid gap-10 lg:grid-cols-4">
-            <div
-              className="absolute left-0 right-0 top-7 hidden h-px bg-brand-200 lg:block"
-              aria-hidden
-            />
-            {process.map((phase, i) => (
-              <li key={phase.step} className="relative" data-reveal style={delay(i * 110)}>
-                <div className="relative z-10 grid h-14 w-14 place-items-center rounded-2xl bg-brand-600 shadow-lg shadow-brand-600/25">
-                  <phase.icon className="h-6 w-6 text-white" aria-hidden />
-                </div>
-                <p className="mt-5 font-display text-sm font-bold tracking-widest text-brand-500">STEP {phase.step}</p>
-                <h3 className="mt-2 font-display text-xl font-bold text-night-900">{phase.title}</h3>
-                <p className="mt-2.5 leading-relaxed text-slate-600">{phase.description}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      {/* ====================== PROCESS (sticky) ========================= */}
+      <HowItWorks
+        eyebrow="How we work"
+        title="A simple process, from first call to long-term care"
+        description="Every engagement follows the same four steps — so you always know exactly where things stand."
+        steps={process.map((phase) => ({
+          n: phase.step,
+          icon: phase.iconName,
+          title: phase.title,
+          description: phase.description,
+        }))}
+      />
 
       {/* ============================== FAQ =============================== */}
       <section className="bg-white py-24">

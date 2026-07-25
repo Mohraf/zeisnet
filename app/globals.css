@@ -41,6 +41,7 @@
   --animate-orbit: orbit 24s linear infinite;
   --animate-pulse-ring: pulse-ring 3.2s ease-out infinite;
   --animate-dash: dash 4s linear infinite;
+  --animate-shine: shine 6s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -88,6 +89,17 @@
   }
 }
 
+/* Slow gradient sweep for hero headline accents */
+@keyframes shine {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 /* ------------------------------------------------------------------ */
 /*  Base                                                               */
 /* ------------------------------------------------------------------ */
@@ -109,39 +121,67 @@ body {
 /*  Reusable composition classes                                       */
 /* ------------------------------------------------------------------ */
 
-/* Headline accent text (flat, single-colour) */
-.text-gradient {
-  @apply text-accent-400;
-}
-
+/*
+ * Headline accent text — animated blue→cyan gradient shine.
+ * Tuned for LIGHT backgrounds (the site is now light throughout).
+ */
+.text-gradient,
 .text-gradient-dark {
-  @apply text-brand-600;
+  background-image: linear-gradient(
+    100deg,
+    var(--color-brand-600),
+    var(--color-brand-500),
+    var(--color-accent-500),
+    var(--color-brand-600)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-shine);
 }
 
-/* Glassmorphism surface (for use on dark sections) */
+/*
+ * Soft card — the core surface of the light "Daylight" system:
+ * white on a hairline border with a soft, low, diffuse shadow.
+ */
+.soft-card {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-200, #e2e8f0);
+  box-shadow:
+    0 1px 2px rgb(15 23 42 / 0.04),
+    0 12px 32px -12px rgb(15 23 42 / 0.10);
+}
+
+/* Frosted-glass surface for the sticky nav */
 .glass {
-  @apply border border-white/10 bg-white/[0.06] backdrop-blur-xl;
+  @apply border border-slate-200/70 bg-white/80 backdrop-blur-xl;
 }
 
-/* Faint blueprint grid overlay for dark sections */
-.bg-grid-dark {
-  background-image: linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
-  background-size: 44px 44px;
+/* ------------------------------------------------------------------ */
+/*  Lenis smooth scroll (driven by components/site-motion.tsx)         */
+/* ------------------------------------------------------------------ */
+html.lenis,
+html.lenis body {
+  height: auto;
 }
-
-.bg-grid-light {
-  background-image: linear-gradient(to right, rgb(15 26 51 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(15 26 51 / 0.05) 1px, transparent 1px);
-  background-size: 44px 44px;
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
 }
 
 /* Scroll-reveal animation (driven by components/reveal.tsx) */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(28px) scale(0.985);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
 }
 
 [data-reveal].is-visible {
@@ -149,13 +189,37 @@ body {
   transform: none;
 }
 
+/*
+ * Masked "rise" reveal for large headings — the heading slides up from behind
+ * an overflow-hidden window. Signature motion of editorial / agency sites.
+ * Put data-reveal="mask" on a WRAPPER; its single child is the heading.
+ */
+[data-reveal="mask"] {
+  overflow: hidden;
+  opacity: 1;
+  transform: none;
+  /* room so descenders (g, y, p) are never clipped at rest */
+  padding-bottom: 0.12em;
+}
+[data-reveal="mask"] > * {
+  transform: translateY(115%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: transform;
+}
+[data-reveal="mask"].is-visible > * {
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  [data-reveal] {
+  [data-reveal],
+  [data-reveal="mask"] > * {
     opacity: 1;
     transform: none;
+    clip-path: none;
     transition: none;
   }
   .animate-float,
@@ -163,7 +227,8 @@ body {
   .animate-marquee,
   .animate-orbit,
   .animate-pulse-ring,
-  .animate-dash {
+  .animate-dash,
+  .text-gradient {
     animation: none !important;
   }
 }

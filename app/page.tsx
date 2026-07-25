@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { FramedTag } from "@/components/ui/framed-tag";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { HeroVisual } from "@/components/hero-visual";
+import { HowItWorks } from "@/components/how-it-works";
 import { LogoMarquee } from "@/components/logo-marquee";
 import { CtaSection } from "@/components/cta-section";
 import { site } from "@/lib/site";
@@ -33,15 +34,15 @@ import { reviews as testimonials } from "@/lib/reviews";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Zeisnet — IT Services Company in Kigali, Rwanda | Cloud, Cybersecurity & Support",
+    absolute: "Zeisnet — Software Development & IT Services | Kigali, Rwanda & Worldwide",
   },
   description:
-    "Trusted IT services company in Kigali, Rwanda. Zeisnet delivers IT consulting, cloud services, cybersecurity, networking, computer repair and digital skills training for businesses across Rwanda, East Africa and beyond. Free consultation.",
+    "Zeisnet is a technology company rooted in Kigali, Rwanda, delivering software development, IT consulting, cloud, cybersecurity, networking, computer repair and digital skills training to organisations in Rwanda, across Africa and beyond — on-site locally and remotely worldwide. Free consultation.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Zeisnet — IT Services Company in Kigali, Rwanda",
+    title: "Zeisnet — Software Development & IT Services · Kigali to the World",
     description:
-      "IT consulting, cloud, cybersecurity, networking, repairs and training for businesses in Rwanda and across Africa. Free consultation.",
+      "Software development, IT consulting, cloud, cybersecurity, networking and repairs — from our home in Kigali to clients across Africa and beyond. Free consultation.",
     url: "/",
   },
 };
@@ -56,7 +57,7 @@ const stats = [
   { value: "10+", label: "Years combined expertise" },
   { value: "500+", label: "Devices repaired & upgraded" },
   { value: "99.9%", label: "Managed network uptime" },
-  { value: "24/7", label: "Remote support available" },
+  { value: "24/7", label: "Remote support worldwide" },
 ];
 
 const services = [
@@ -123,6 +124,13 @@ const whyPoints = [
 
 const solutions = [
   {
+    icon: Code2,
+    title: "Custom software",
+    description:
+      "Web and business applications built around how you actually work — from internal tools to customer-facing platforms, delivered and maintained end to end.",
+    points: ["Web & business apps", "Process automation", "Ongoing maintenance & support"],
+  },
+  {
     icon: MonitorSmartphone,
     title: "Modern workplace",
     description:
@@ -153,43 +161,43 @@ export default function HomePage() {
   return (
     <>
       {/* ============================== HERO ============================== */}
-      <section className="relative overflow-hidden bg-night-950">
-        <div className="bg-grid-dark absolute inset-0" aria-hidden />
-        <div className="absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-brand-600/25 blur-3xl" aria-hidden />
-        <div className="absolute -right-24 top-10 h-[24rem] w-[24rem] rounded-full bg-accent-500/15 blur-3xl" aria-hidden />
+      <section className="relative overflow-hidden bg-white lg:flex lg:min-h-[100svh] lg:items-center">
+        {/* Soft light ambience */}
+        <div className="absolute -left-40 top-0 h-[32rem] w-[32rem] rounded-full bg-brand-200/35 blur-3xl" aria-hidden />
+        <div className="absolute -right-32 bottom-0 h-[28rem] w-[28rem] rounded-full bg-cyan-200/35 blur-3xl" aria-hidden />
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-5 pb-24 pt-36 sm:px-8 lg:grid-cols-2 lg:pb-32 lg:pt-44">
+        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-16 px-5 pb-24 pt-36 sm:px-8 lg:grid-cols-2 lg:py-32">
           <div className="flex flex-col items-start gap-7">
             <div data-reveal>
-              <FramedTag>The Best IT Services Company in Kigali, Rwanda</FramedTag>
+              <FramedTag>Rooted in Kigali · Delivering worldwide</FramedTag>
             </div>
-            <h1
-              className="font-display text-4xl font-bold leading-[1.08] tracking-tight text-balance text-white sm:text-5xl lg:text-[3.6rem]"
-              data-reveal
-              style={delay(80)}
-            >
-              Your technology partner for a <span className="text-gradient">smarter, more secure</span> business
-            </h1>
-            <p className="max-w-xl text-lg leading-relaxed text-slate-400" data-reveal style={delay(160)}>
-              From cloud and cybersecurity to repairs and digital skills training, Zeisnet keeps
-              organisations across Rwanda running, protected and ready for what&apos;s next.
+            <div data-reveal="mask" style={delay(80)}>
+              <h1 className="font-display text-4xl font-bold leading-[1.06] tracking-tight text-balance text-night-900 sm:text-5xl lg:text-[3.6rem]">
+                Your partner to <span className="text-gradient">build, secure and support</span> the technology your business runs on
+              </h1>
+            </div>
+            <p className="max-w-xl text-lg leading-relaxed text-slate-600" data-reveal style={delay(160)}>
+              From custom software and cloud to cybersecurity, networks and repairs, Zeisnet helps
+              organisations in Rwanda, across Africa and beyond{" "}
+              <span className="font-semibold text-night-900">build, run and protect</span> the technology they
+              depend on.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row" data-reveal style={delay(240)}>
               <Button href="/contact" size="lg">
                 Get a free consultation
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Button>
-              <Button href="/services" variant="outline-dark" size="lg">
+              <Button href="/services" variant="secondary" size="lg">
                 Explore our services
               </Button>
             </div>
 
             {/* Stats strip */}
-            <dl className="mt-6 grid w-full grid-cols-2 gap-x-8 gap-y-6 border-t border-white/10 pt-8 sm:grid-cols-4" data-reveal style={delay(320)}>
+            <dl className="mt-6 grid w-full grid-cols-2 gap-x-8 gap-y-6 border-t border-slate-200 pt-8 sm:grid-cols-4" data-reveal style={delay(320)}>
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <dt className="sr-only">{stat.label}</dt>
-                  <dd className="font-display text-2xl font-bold text-white sm:text-3xl">{stat.value}</dd>
+                  <dd className="font-display text-2xl font-bold text-night-900 sm:text-3xl">{stat.value}</dd>
                   <dd className="mt-1 text-xs leading-snug text-slate-500">{stat.label}</dd>
                 </div>
               ))}
@@ -206,7 +214,7 @@ export default function HomePage() {
       <LogoMarquee />
 
       {/* ========================= SERVICES OVERVIEW ====================== */}
-      <section className="bg-slate-50 py-24 lg:py-32">
+      <section className="bg-white py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="What we do"
@@ -247,14 +255,12 @@ export default function HomePage() {
       </section>
 
       {/* ========================== WHY ZEISNET =========================== */}
-      <section className="relative overflow-hidden bg-night-950 py-24 lg:py-32">
-        <div className="bg-grid-dark absolute inset-0" aria-hidden />
-        <div className="absolute right-[-15%] top-[-20%] h-[30rem] w-[30rem] rounded-full bg-brand-600/20 blur-3xl" aria-hidden />
+      <section className="relative overflow-hidden bg-slate-50 py-24 lg:py-32">
+        <div className="absolute right-[-15%] top-[-20%] h-[30rem] w-[30rem] rounded-full bg-brand-200/30 blur-3xl" aria-hidden />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-[1.1fr_1fr]">
           <div>
             <SectionHeading
-              tone="dark"
               align="left"
               eyebrow="Why choose Zeisnet"
               title={
@@ -262,10 +268,10 @@ export default function HomePage() {
                   Technology decisions you can <span className="text-gradient">actually trust</span>
                 </>
               }
-              description="We've built our reputation on straight answers, honest pricing and work that holds up. That's why businesses across Kigali keep coming back."
+              description="We've built our reputation on straight answers, honest pricing and work that holds up — for clients in Kigali and around the world. That's why businesses keep coming back."
             />
             <div className="mt-10" data-reveal>
-              <Button href="/contact" variant="outline-dark">
+              <Button href="/contact">
                 Talk to an engineer
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Button>
@@ -276,15 +282,15 @@ export default function HomePage() {
             {whyPoints.map((point, i) => (
               <div
                 key={point.title}
-                className="glass group rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40 hover:bg-white/[0.09]"
+                className="soft-card group rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1"
                 data-reveal
                 style={delay(i * 100)}
               >
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-500/20 text-accent-300">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-600 transition-colors duration-300 group-hover:bg-brand-600 group-hover:text-white">
                   <point.icon className="h-5 w-5" aria-hidden />
                 </span>
-                <h3 className="mt-5 font-display text-lg font-bold text-white">{point.title}</h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-slate-400">{point.description}</p>
+                <h3 className="mt-5 font-display text-lg font-bold text-night-900">{point.title}</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-slate-600">{point.description}</p>
               </div>
             ))}
           </div>
@@ -297,10 +303,10 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Technology solutions"
             title="Built end to end, managed with care"
-            description="Three solution pillars that cover the full life of your technology — from first setup to daily protection to safe retirement."
+            description="Four solution pillars that cover the full life of your technology — from custom software and first setup to daily protection and safe retirement."
           />
 
-          <div className="mt-16 grid gap-6 lg:grid-cols-3">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {solutions.map((solution, i) => (
               <div
                 key={solution.title}
@@ -327,9 +333,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ====================== HOW IT WORKS (sticky) ===================== */}
+      <HowItWorks />
+
       {/* ==================== CAPACITY BUILDING BAND ====================== */}
       <section className="relative overflow-hidden bg-brand-700 py-20 lg:py-24">
-        <div className="bg-grid-dark absolute inset-0 opacity-60" aria-hidden />
         <div className="absolute -bottom-24 right-[8%] hidden lg:block" aria-hidden>
           <Laptop className="h-72 w-72 rotate-[-8deg] text-white/10" />
         </div>
@@ -414,13 +422,11 @@ export default function HomePage() {
       </section>
 
       {/* ========================== TESTIMONIALS ========================== */}
-      <section className="relative overflow-hidden bg-night-900 py-24 lg:py-32">
-        <div className="bg-grid-dark absolute inset-0" aria-hidden />
-        <div className="absolute left-[-10%] top-[30%] h-96 w-96 rounded-full bg-accent-500/10 blur-3xl" aria-hidden />
+      <section className="relative overflow-hidden bg-white py-24 lg:py-32">
+        <div className="absolute left-[-10%] top-[30%] h-96 w-96 rounded-full bg-cyan-200/25 blur-3xl" aria-hidden />
 
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
-            tone="dark"
             eyebrow="Success stories"
             title="What our clients say"
             description="Real, 5-star reviews from the people and businesses we've helped — straight from our Google profile."
@@ -430,20 +436,20 @@ export default function HomePage() {
             {testimonials.map((t, i) => (
               <figure
                 key={t.name}
-                className="glass flex flex-col rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40"
+                className="soft-card flex flex-col rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1"
                 data-reveal
                 style={delay(i * 120)}
               >
                 <div className="flex items-center justify-between">
-                  <Quote className="h-8 w-8 text-accent-400" aria-hidden />
+                  <Quote className="h-8 w-8 text-brand-500" aria-hidden />
                   <div className="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 stars">
                     {Array.from({ length: 5 }).map((_, s) => (
                       <Star key={s} className="h-4 w-4 fill-amber-400 text-amber-400" aria-hidden />
                     ))}
                   </div>
                 </div>
-                <blockquote className="mt-5 flex-1 leading-relaxed text-slate-300">“{t.quote}”</blockquote>
-                <figcaption className="mt-7 flex items-center gap-4 border-t border-white/10 pt-6">
+                <blockquote className="mt-5 flex-1 leading-relaxed text-slate-600">“{t.quote}”</blockquote>
+                <figcaption className="mt-7 flex items-center gap-4 border-t border-slate-100 pt-6">
                   <span
                     className="grid h-11 w-11 place-items-center rounded-full bg-brand-600 font-display text-sm font-bold text-white"
                     aria-hidden
@@ -451,8 +457,8 @@ export default function HomePage() {
                     {t.name.charAt(0)}
                   </span>
                   <div>
-                    <p className="font-semibold text-white">{t.name}</p>
-                    <p className="text-xs text-slate-400">{t.role}</p>
+                    <p className="font-semibold text-night-900">{t.name}</p>
+                    <p className="text-xs text-slate-500">{t.role}</p>
                   </div>
                 </figcaption>
               </figure>
@@ -460,7 +466,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-12 flex justify-center" data-reveal>
-            <Button href={site.googleReviewsUrl} newTab variant="outline-dark" size="lg">
+            <Button href={site.googleReviewsUrl} newTab variant="secondary" size="lg">
               View more reviews on Google
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
             </Button>

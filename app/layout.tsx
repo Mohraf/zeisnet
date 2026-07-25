@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { RevealObserver } from "@/components/reveal";
+import { SiteMotion } from "@/components/site-motion";
 import { WhatsappButton } from "@/components/whatsapp-button";
 import { JsonLd } from "@/components/json-ld";
 import { SITE_URL, GEO, localBusinessJsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: "Zeisnet",
   title: {
-    default: "Zeisnet — IT Services & Technology Solutions in Kigali, Rwanda",
+    default: "Zeisnet — Software Development & IT Services · Kigali & Worldwide",
     template: "%s | Zeisnet",
   },
   description:
@@ -73,15 +74,15 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Zeisnet",
     locale: "en_US",
-    title: "Zeisnet — IT Services & Technology Solutions in Kigali, Rwanda",
+    title: "Zeisnet — Software Development & IT Services · Kigali & Worldwide",
     description:
-      "IT consulting, cloud, cybersecurity, networking, repairs and digital skills training for organisations in Rwanda, East Africa and beyond.",
+      "Software development, IT consulting, cloud, cybersecurity, networking, repairs and digital skills training for organisations in Rwanda, across Africa and beyond.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zeisnet — IT Services & Technology Solutions in Kigali, Rwanda",
+    title: "Zeisnet — Software Development & IT Services · Kigali & Worldwide",
     description:
-      "IT consulting, cloud, cybersecurity, networking, repairs and digital skills training for organisations in Rwanda, East Africa and beyond.",
+      "Software development, IT consulting, cloud, cybersecurity, networking, repairs and digital skills training for organisations in Rwanda, across Africa and beyond.",
   },
   formatDetection: {
     telephone: true,
@@ -117,6 +118,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WhatsappButton />
         <RevealObserver />
+        <SiteMotion />
         <JsonLd data={localBusinessJsonLd} />
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />

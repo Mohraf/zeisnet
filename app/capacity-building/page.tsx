@@ -6,10 +6,6 @@ import {
   Palette,
   Network,
   Cpu,
-  ClipboardList,
-  Puzzle,
-  Presentation,
-  BadgeCheck,
   TrendingUp,
   Users,
   Shield,
@@ -23,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PageHero } from "@/components/page-hero";
+import { HowItWorks } from "@/components/how-it-works";
 import { CtaSection } from "@/components/cta-section";
 import { JsonLd } from "@/components/json-ld";
 import { breadcrumbJsonLd, coursesJsonLd } from "@/lib/seo";
@@ -91,25 +88,25 @@ const categories = [
 
 const timeline = [
   {
-    icon: ClipboardList,
+    iconName: "assess",
     step: "01",
     title: "Skills assessment",
     description: "We map your team's current skill levels and identify the gaps that matter most to your goals.",
   },
   {
-    icon: Puzzle,
+    iconName: "curriculum",
     step: "02",
     title: "Custom curriculum",
     description: "Modules are combined into a program tailored to your roles, industry and schedule.",
   },
   {
-    icon: Presentation,
+    iconName: "train",
     step: "03",
     title: "Hands-on training",
     description: "Practical, exercise-driven sessions — at your office, our lab, or live online.",
   },
   {
-    icon: BadgeCheck,
+    iconName: "certify",
     step: "04",
     title: "Certify & follow up",
     description: "Participants earn completion certificates, and we check in after 30 days to reinforce learning.",
@@ -170,7 +167,7 @@ export default function CapacityBuildingPage() {
             Register your team
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
           </Button>
-          <Button href="#programs" variant="outline-dark" size="lg">
+          <Button href="#programs" variant="secondary" size="lg">
             Browse programs
           </Button>
         </div>
@@ -216,42 +213,22 @@ export default function CapacityBuildingPage() {
         </div>
       </section>
 
-      {/* ========================= LEARNING TIMELINE ====================== */}
-      <section className="relative overflow-hidden bg-night-950 py-24">
-        <div className="bg-grid-dark absolute inset-0" aria-hidden />
-        <div className="absolute right-[-10%] top-[-20%] h-96 w-96 rounded-full bg-brand-600/20 blur-3xl" aria-hidden />
-
-        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-          <SectionHeading
-            tone="dark"
-            eyebrow="How learning works"
-            title="From skills gap to certificate in four steps"
-            description="Every program is structured, measurable and built around your team's real work."
-          />
-
-          <ol className="relative mt-16 grid gap-8 lg:grid-cols-4">
-            <div
-              className="absolute left-0 right-0 top-7 hidden h-px bg-white/20 lg:block"
-              aria-hidden
-            />
-            {timeline.map((phase, i) => (
-              <li key={phase.step} className="glass relative rounded-3xl p-7" data-reveal style={delay(i * 110)}>
-                <div className="flex items-center justify-between">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-600 shadow-lg shadow-brand-600/30">
-                    <phase.icon className="h-5.5 w-5.5 text-white" aria-hidden />
-                  </span>
-                  <span className="font-display text-3xl font-bold text-white/15">{phase.step}</span>
-                </div>
-                <h3 className="mt-5 font-display text-lg font-bold text-white">{phase.title}</h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-slate-400">{phase.description}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      {/* ==================== LEARNING TIMELINE (sticky) ================== */}
+      <HowItWorks
+        eyebrow="How learning works"
+        title="From skills gap to certificate in four steps"
+        description="Every program is structured, measurable and built around your team's real work."
+        background="bg-white"
+        steps={timeline.map((phase) => ({
+          n: phase.step,
+          icon: phase.iconName,
+          title: phase.title,
+          description: phase.description,
+        }))}
+      />
 
       {/* ============================ TRAINERS ============================ */}
-      <section className="bg-white py-24">
+      <section className="bg-slate-50 py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Your trainers"
@@ -263,7 +240,7 @@ export default function CapacityBuildingPage() {
             {trainers.map((trainer, i) => (
               <div
                 key={trainer.title}
-                className="group rounded-3xl border border-slate-200 bg-slate-50 p-8 transition-all duration-300 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-600/10"
+                className="soft-card group rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1"
                 data-reveal
                 style={delay(i * 110)}
               >
@@ -279,7 +256,7 @@ export default function CapacityBuildingPage() {
       </section>
 
       {/* ============================ BENEFITS ============================ */}
-      <section className="bg-slate-50 py-24">
+      <section className="bg-white py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Why invest in training"

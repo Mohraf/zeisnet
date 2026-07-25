@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
 
-export const alt = "Zeisnet — IT Services & Technology Solutions in Kigali, Rwanda";
+export const alt = "Zeisnet — Software Development & IT Services · Kigali & Worldwide";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -46,11 +46,11 @@ export default function OgImage() {
 
         {/* Headline */}
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          <div style={{ display: "flex", fontSize: 68, fontWeight: 700, lineHeight: 1.1, letterSpacing: -2 }}>
-            Your technology partner for a smarter, more secure business
+          <div style={{ display: "flex", fontSize: 66, fontWeight: 700, lineHeight: 1.1, letterSpacing: -2 }}>
+            Build, secure and support the technology your business runs on
           </div>
           <div style={{ display: "flex", fontSize: 30, color: "#94a3b8" }}>
-            IT Consulting · Cloud · Cybersecurity · Training
+            Software Development · Cloud · Cybersecurity · IT Support
           </div>
         </div>
 

@@ -23,7 +23,6 @@ const socials = [
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-night-950 text-slate-400">
-      <div className="bg-grid-dark absolute inset-0" aria-hidden />
       <div
         className="absolute -top-40 left-1/2 h-80 w-[40rem] -translate-x-1/2 rounded-full bg-brand-600/15 blur-3xl"
         aria-hidden
@@ -35,8 +34,8 @@ export function Footer() {
           <div className="space-y-5">
             <Logo tone="light" />
             <p className="max-w-xs text-sm leading-relaxed">
-              Your trusted technology partner in Kigali — delivering IT services, cloud solutions,
-              cybersecurity and digital skills that help organisations grow with confidence.
+              Your trusted technology partner — headquartered in Kigali, delivering software, IT, cloud
+              and cybersecurity to organisations across Africa and beyond.
             </p>
             <ul className="flex gap-3">
               {socials.map(({ label, href, Icon }) => (
@@ -116,7 +115,7 @@ export function Footer() {
             © {new Date().getFullYear()} {site.legalName}. All rights reserved.
           </p>
           <p className="text-slate-500">
-            Built in Kigali · Serving businesses across Rwanda &amp; East Africa
+            Built in Kigali · Serving clients across Africa &amp; beyond
           </p>
         </div>
       </div>
