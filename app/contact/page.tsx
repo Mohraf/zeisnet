@@ -118,7 +118,7 @@ export default function ContactPage() {
             Let&apos;s talk about <span className="text-gradient">your technology</span>
           </>
         }
-        description="Whether it's a broken laptop, a security worry or a full transformation project — reach out. A real engineer reads every message, and the first consultation is always free."
+        description="Whether it's a broken laptop, a security worry or a full transformation project, reach out. A real engineer reads every message, and the first consultation is always free."
       />
 
       {/* ====================== CHANNELS + FORM =========================== */}
@@ -148,7 +148,7 @@ export default function ContactPage() {
           <div className="mt-16 grid gap-10 lg:grid-cols-[1.5fr_1fr]">
             <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10" data-reveal>
               <h2 className="font-display text-2xl font-bold text-night-900">Send us a message</h2>
-              <p className="mt-2 text-slate-600">Tell us what you need — we&apos;ll reply within one business day.</p>
+              <p className="mt-2 text-slate-600">Tell us what you need, we&apos;ll reply within one business day.</p>
               <div className="mt-8">
                 <ContactForm />
               </div>

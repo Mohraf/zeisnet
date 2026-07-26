@@ -1,15 +1,22 @@
 import type { ReactNode } from "react";
 
 /**
- * Hero announcement pill — a clean, light rounded chip with a small live dot.
+ * Hero kicker — bold, uppercase, wide-tracked overlay text (no pill chrome),
+ * echoing the "POWER YOU CONTROL" treatment. `tone="light"` switches to a
+ * cyan tint for dark bands (e.g. the motherboard hero).
  */
-export function FramedTag({ children }: { children: ReactNode }) {
+export function FramedTag({
+  children,
+  tone = "ink",
+}: {
+  children: ReactNode;
+  tone?: "ink" | "light";
+}) {
+  const color = tone === "light" ? "text-cyan-300" : "text-night-900";
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-semibold text-slate-600 shadow-sm">
-      <span className="relative flex h-1.5 w-1.5" aria-hidden>
-        <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-brand-500" />
-        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-600" />
-      </span>
+    <span
+      className={`block font-display text-xs font-bold uppercase tracking-[0.22em] sm:text-sm sm:tracking-[0.28em] ${color}`}
+    >
       {children}
     </span>
   );

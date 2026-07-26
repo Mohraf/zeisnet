@@ -45,7 +45,7 @@ const defaultSteps: HowItWorksStep[] = [
     icon: "consult",
     title: "Consult",
     description:
-      "We listen first — auditing your systems, goals and pain points before proposing anything. No jargon, no pressure.",
+      "We listen first, auditing your systems, goals and pain points before proposing anything. No jargon, no pressure.",
     points: ["Free assessment", "Honest advice"],
   },
   {
@@ -53,7 +53,7 @@ const defaultSteps: HowItWorksStep[] = [
     icon: "plan",
     title: "Plan",
     description:
-      "You get a clear scope, realistic timeline and a fixed quote — so you always know exactly what happens next and what it costs.",
+      "You get a clear scope, realistic timeline and a fixed quote so you always know exactly what happens next and what it costs.",
     points: ["Fixed quote", "Clear roadmap"],
   },
   {
@@ -61,7 +61,7 @@ const defaultSteps: HowItWorksStep[] = [
     icon: "deploy",
     title: "Deploy",
     description:
-      "Certified engineers implement with minimal disruption to your day-to-day — on-site in Kigali or remotely, whatever suits you.",
+      "Certified engineers implement with minimal disruption to your day-to-day. On-site in Kigali or remotely, whatever suits you.",
     points: ["Certified engineers", "Minimal downtime"],
   },
   {
@@ -69,7 +69,7 @@ const defaultSteps: HowItWorksStep[] = [
     icon: "support",
     title: "Support",
     description:
-      "We stay with you long after go-live — monitoring, maintaining and improving, with 24/7 help when you need it most.",
+      "We stay with you long after go-live. Monitoring, maintaining and improving, with 24/7 help when you need it most.",
     points: ["24/7 monitoring", "Ongoing care"],
   },
 ];
@@ -77,7 +77,7 @@ const defaultSteps: HowItWorksStep[] = [
 export function HowItWorks({
   eyebrow = "How it works",
   title = "From first call to long-term care",
-  description = "Every engagement follows the same four clear steps — so you always know exactly where things stand.",
+  description = "Every engagement follows the same four clear steps so you always know exactly where things stand.",
   steps = defaultSteps,
   background = "bg-slate-50",
 }: {

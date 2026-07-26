@@ -160,7 +160,7 @@ export default function CapacityBuildingPage() {
             Empowering people through <span className="text-gradient">technology skills</span>
           </>
         }
-        description="Capacity building is how organisations survive and thrive in a fast-changing world. Our 30+ hands-on training modules strengthen the skills, instincts and confidence of your most important asset — your people."
+        description="Capacity building is how organisations survive and thrive in a fast-changing world. Our 30+ hands-on training modules strengthen the skills, instincts and confidence of your most important asset, your people."
       >
         <div className="flex flex-col gap-4 sm:flex-row">
           <Button href="/contact" size="lg">
@@ -179,7 +179,7 @@ export default function CapacityBuildingPage() {
           <SectionHeading
             eyebrow="Training programs"
             title="Four tracks, thirty-plus modules"
-            description="Mix and match modules across tracks to build the exact program your team needs — from complete beginners to power users."
+            description="Mix and match modules across tracks to build the exact program your team needs, from complete beginners to power users."
           />
 
           <div className="mt-16 grid gap-6 lg:grid-cols-2">

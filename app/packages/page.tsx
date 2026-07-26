@@ -148,7 +148,7 @@ export default function PackagesPage() {
             Predictable IT support, <span className="text-gradient">priced for Rwanda</span>
           </>
         }
-        description="Four monthly plans named after the qualities they bring to your business — champion, graceful, shield, fearless. No hidden fees, no long contracts, cancel any month."
+        description="Four monthly plans named after the qualities they bring to your business. Champion, graceful, shield, fearless. No hidden fees, no long contracts, cancel any month."
       />
 
       {/* ========================== PRICING CARDS ========================= */}
@@ -229,7 +229,7 @@ export default function PackagesPage() {
           <SectionHeading
             eyebrow="Compare plans"
             title="Every plan, side by side"
-            description="A transparent look at exactly what each package includes — so you can decide in minutes."
+            description="A transparent look at exactly what each package includes so you can decide in minutes."
           />
 
           <div className="mt-14 overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-sm" data-reveal>

@@ -100,6 +100,61 @@
   }
 }
 
+/* ---- Hero orbit intro (logo loads big, then shrinks into place) ---- */
+@keyframes orbitLogoIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-16%) scale(1.7);
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes orbitRingIn {
+  from {
+    opacity: 0;
+    transform: scale(0.45);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes orbitFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes orbitCardIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+/* Continuous revolve of the service cards around the logo (+ counter-spin
+   applied per card so the card itself stays upright). */
+@keyframes orbitRevolve {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes orbitCounter {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
 /* ------------------------------------------------------------------ */
 /*  Base                                                               */
 /* ------------------------------------------------------------------ */
@@ -142,6 +197,25 @@ body {
 }
 
 /*
+ * Neon headline accent — brighter blue→cyan shine tuned for DARK bands
+ * (the motherboard hero). Same animation as .text-gradient, lighter stops.
+ */
+.text-gradient-neon {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-brand-400),
+    var(--color-accent-400),
+    var(--color-accent-300),
+    var(--color-brand-400)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-shine);
+}
+
+/*
  * Soft card — the core surface of the light "Daylight" system:
  * white on a hairline border with a soft, low, diffuse shadow.
  */
@@ -173,6 +247,44 @@ html.lenis body {
 }
 .lenis.lenis-stopped {
   overflow: clip;
+}
+
+/* Hero orbit intro animation classes (one-shot on load) */
+.orbit-logo {
+  animation: orbitLogoIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.orbit-ring {
+  transform-origin: center;
+  animation: orbitRingIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.orbit-links {
+  animation: orbitFadeIn 0.9s ease both;
+}
+.orbit-card {
+  animation: orbitCardIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+/* Resting hero logo is hidden while the full-screen intro logo flies to it */
+.intro-hidden {
+  opacity: 0 !important;
+}
+
+/* Hold the orbit assembly + revolve paused until the intro hands off, so it
+   cascades in with the rest of the homepage as the backdrop clears. */
+html[data-intro="running"] .orbit-ring,
+html[data-intro="running"] .orbit-links,
+html[data-intro="running"] .orbit-card,
+html[data-intro="running"] .orbit-wrap,
+html[data-intro="running"] .orbit-counter {
+  animation-play-state: paused;
+}
+/* Slow revolve; --orbit-speed can override per instance */
+.orbit-wrap {
+  animation: orbitRevolve var(--orbit-speed, 44s) linear infinite;
+  transform-origin: center;
+}
+.orbit-counter {
+  animation: orbitCounter var(--orbit-speed, 44s) linear infinite;
+  transform-origin: center;
 }
 
 /* Scroll-reveal animation (driven by components/reveal.tsx) */
@@ -228,7 +340,18 @@ html.lenis body {
   .animate-orbit,
   .animate-pulse-ring,
   .animate-dash,
-  .text-gradient {
+  .text-gradient,
+  .text-gradient-neon {
     animation: none !important;
+  }
+  .orbit-logo,
+  .orbit-ring,
+  .orbit-links,
+  .orbit-card,
+  .orbit-wrap,
+  .orbit-counter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

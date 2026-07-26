@@ -25,7 +25,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { FramedTag } from "@/components/ui/framed-tag";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { HeroVisual } from "@/components/hero-visual";
+import { HeroVisual, MotherboardBackdrop } from "@/components/hero-visual";
+import { HeroIntro } from "@/components/hero-intro";
 import { HowItWorks } from "@/components/how-it-works";
 import { LogoMarquee } from "@/components/logo-marquee";
 import { CtaSection } from "@/components/cta-section";
@@ -64,7 +65,7 @@ const services = [
   {
     icon: Lightbulb,
     title: "IT Consulting",
-    description: "Practical technology roadmaps aligned to your business goals — not jargon.",
+    description: "Practical technology roadmaps aligned to your business goals, not jargon.",
     href: "/services#consulting",
   },
   {
@@ -108,7 +109,7 @@ const whyPoints = [
   {
     icon: Clock3,
     title: "Fast turnaround",
-    description: "Clear timelines and honest communication — most repairs and fixes are done within days, not weeks.",
+    description: "Clear timelines and honest communication. Most repairs and fixes are done within days, not weeks.",
   },
   {
     icon: HeartHandshake,
@@ -127,14 +128,14 @@ const solutions = [
     icon: Code2,
     title: "Custom software",
     description:
-      "Web and business applications built around how you actually work — from internal tools to customer-facing platforms, delivered and maintained end to end.",
+      "Web and business applications built around how you actually work. From internal tools to customer-facing platforms, delivered and maintained end to end.",
     points: ["Web & business apps", "Process automation", "Ongoing maintenance & support"],
   },
   {
     icon: MonitorSmartphone,
     title: "Modern workplace",
     description:
-      "Microsoft 365 setup and administration end to end — users, devices, Exchange, SharePoint and Teams — so your team works from anywhere, securely.",
+      "Microsoft 365 setup and administration end to end. Users, devices, Exchange, SharePoint and Teams so your team works from anywhere, securely.",
     points: ["M365 licensing & onboarding", "Azure AD & device management", "Email & collaboration setup"],
   },
   {
@@ -160,26 +161,27 @@ const solutions = [
 export default function HomePage() {
   return (
     <>
-      {/* ============================== HERO ============================== */}
-      <section className="relative overflow-hidden bg-white lg:flex lg:min-h-[100svh] lg:items-center">
-        {/* Soft light ambience */}
-        <div className="absolute -left-40 top-0 h-[32rem] w-[32rem] rounded-full bg-brand-200/35 blur-3xl" aria-hidden />
-        <div className="absolute -right-32 bottom-0 h-[28rem] w-[28rem] rounded-full bg-cyan-200/35 blur-3xl" aria-hidden />
+      <HeroIntro />
 
-        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-16 px-5 pb-24 pt-36 sm:px-8 lg:grid-cols-2 lg:py-32">
+      {/* ============================== HERO ============================== */}
+      <section className="relative isolate overflow-hidden bg-night-950 lg:flex lg:min-h-[100svh] lg:items-center">
+        {/* Dark motherboard board: substrate, etched traces + colour glows */}
+        <MotherboardBackdrop />
+
+        <div className="relative mx-auto grid w-full max-w-7xl items-start gap-16 px-5 pb-24 pt-36 sm:px-8 lg:grid-cols-2 lg:py-32">
           <div className="flex flex-col items-start gap-7">
             <div data-reveal>
-              <FramedTag>Rooted in Kigali · Delivering worldwide</FramedTag>
+              <FramedTag tone="light">Rooted in Kigali · Delivering worldwide</FramedTag>
             </div>
             <div data-reveal="mask" style={delay(80)}>
-              <h1 className="font-display text-4xl font-bold leading-[1.06] tracking-tight text-balance text-night-900 sm:text-5xl lg:text-[3.6rem]">
-                Your partner to <span className="text-gradient">build, secure and support</span> the technology your business runs on
+              <h1 className="font-display text-4xl font-bold leading-[1.06] tracking-tight text-balance text-white sm:text-5xl lg:text-[3.6rem]">
+                Your partner to <span className="text-gradient-neon">build, secure and support</span> the technology your business runs on
               </h1>
             </div>
-            <p className="max-w-xl text-lg leading-relaxed text-slate-600" data-reveal style={delay(160)}>
+            <p className="max-w-xl text-lg leading-relaxed text-slate-300" data-reveal style={delay(160)}>
               From custom software and cloud to cybersecurity, networks and repairs, Zeisnet helps
               organisations in Rwanda, across Africa and beyond{" "}
-              <span className="font-semibold text-night-900">build, run and protect</span> the technology they
+              <span className="font-semibold text-white">build, run and protect</span> the technology they
               depend on.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row" data-reveal style={delay(240)}>
@@ -187,24 +189,24 @@ export default function HomePage() {
                 Get a free consultation
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Button>
-              <Button href="/services" variant="secondary" size="lg">
+              <Button href="/services" variant="outline-dark" size="lg">
                 Explore our services
               </Button>
             </div>
 
             {/* Stats strip */}
-            <dl className="mt-6 grid w-full grid-cols-2 gap-x-8 gap-y-6 border-t border-slate-200 pt-8 sm:grid-cols-4" data-reveal style={delay(320)}>
+            <dl className="mt-6 grid w-full grid-cols-2 gap-x-8 gap-y-6 border-t border-white/10 pt-8 sm:grid-cols-4" data-reveal style={delay(320)}>
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <dt className="sr-only">{stat.label}</dt>
-                  <dd className="font-display text-2xl font-bold text-night-900 sm:text-3xl">{stat.value}</dd>
-                  <dd className="mt-1 text-xs leading-snug text-slate-500">{stat.label}</dd>
+                  <dd className="font-display text-2xl font-bold text-white sm:text-3xl">{stat.value}</dd>
+                  <dd className="mt-1 text-xs leading-snug text-slate-400">{stat.label}</dd>
                 </div>
               ))}
             </dl>
           </div>
 
-          <div data-reveal style={delay(200)}>
+          <div>
             <HeroVisual />
           </div>
         </div>
@@ -223,7 +225,7 @@ export default function HomePage() {
                 Everything your business needs, <span className="text-gradient-dark">under one roof</span>
               </>
             }
-            description="Six core practices, one accountable partner. No finger-pointing between vendors — just technology that works together."
+            description="Six core practices, one accountable partner. No finger-pointing between vendors, just technology that works together."
           />
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -268,7 +270,7 @@ export default function HomePage() {
                   Technology decisions you can <span className="text-gradient">actually trust</span>
                 </>
               }
-              description="We've built our reputation on straight answers, honest pricing and work that holds up — for clients in Kigali and around the world. That's why businesses keep coming back."
+              description="We've built our reputation on straight answers, honest pricing and work that holds up for clients in Kigali and around the world. That's why businesses keep coming back."
             />
             <div className="mt-10" data-reveal>
               <Button href="/contact">
@@ -303,7 +305,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Technology solutions"
             title="Built end to end, managed with care"
-            description="Four solution pillars that cover the full life of your technology — from custom software and first setup to daily protection and safe retirement."
+            description="Four solution pillars that cover the full life of your technology. From custom software and first setup to daily protection and safe retirement."
           />
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -352,8 +354,8 @@ export default function HomePage() {
               Great technology needs great people. We train both.
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-blue-100">
-              30+ hands-on training modules — from Microsoft Office mastery to networking, hardware
-              and creative tools — designed to lift your whole team&apos;s digital confidence.
+              30+ hands-on training modules. From Microsoft Office mastery to networking, hardware
+              and creative tools designed to lift your whole team&apos;s digital confidence.
             </p>
           </div>
           <div data-reveal style={delay(150)}>
@@ -429,7 +431,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Success stories"
             title="What our clients say"
-            description="Real, 5-star reviews from the people and businesses we've helped — straight from our Google profile."
+            description="Real, 5-star reviews from the people and businesses we've helped, straight from our Google profile."
           />
 
           <div className="mt-16 grid gap-6 lg:grid-cols-3">

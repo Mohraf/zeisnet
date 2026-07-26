@@ -157,7 +157,7 @@ export function ContactForm() {
         )}
       </Button>
       <p className="text-xs text-slate-400">
-        We respond within one business day. Your details stay private — no spam, ever.
+        We respond within one business day. Your details stay private, no spam, ever.
       </p>
     </form>
   );

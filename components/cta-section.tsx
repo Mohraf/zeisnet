@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export function CtaSection({
   title = "Ready to build a smarter, more secure business?",
-  description = "Talk to our team today. We'll assess your current setup and map out a clear, practical technology roadmap — free of charge.",
+  description = "Talk to our team today. We'll assess your current setup and map out a clear, practical technology roadmap, free of charge.",
 }: {
   title?: string;
   description?: string;

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "IT Services in Kigali, Rwanda | Zeisnet",
     description:
-      "Consulting, networking, cloud, software, cybersecurity, digital transformation and technical support — one accountable IT partner.",
+      "Consulting, networking, cloud, software, cybersecurity, digital transformation and technical support. One accountable IT partner.",
     url: "/services/",
   },
 };
@@ -65,7 +65,7 @@ const services: Service[] = [
     icon: Cloud,
     title: "Cloud Services",
     description:
-      "Full Microsoft 365 licensing and administration — from purchasing licenses to configuring users, devices and admin centers like Azure AD, Exchange, SharePoint and Teams — plus managed cloud infrastructure that scales with you.",
+      "Full Microsoft 365 licensing and administration. From purchasing licenses to configuring users, devices and admin centers like Azure AD, Exchange, SharePoint and Teams. Plus managed cloud infrastructure that scales with you.",
     benefits: ["M365 licensing & administration", "Cloud migration & management", "Work-from-anywhere setup"],
     span: "lg:col-span-3",
     accent: "bg-brand-500",
@@ -90,7 +90,7 @@ const services: Service[] = [
     icon: Network,
     title: "Networking Solutions",
     description:
-      "Fast, reliable business networks — designed, cabled, configured and monitored for maximum uptime.",
+      "Fast, reliable business networks. Designed, cabled, configured and monitored for maximum uptime.",
     benefits: ["Network design & deployment", "Wi-Fi optimisation", "Ongoing monitoring"],
     span: "lg:col-span-2",
     accent: "bg-purple-500",
@@ -100,7 +100,7 @@ const services: Service[] = [
     icon: Code2,
     title: "Software Development",
     description:
-      "Custom web and business applications built around your real workflows — not the other way round.",
+      "Custom web and business applications built around your real workflows, not the other way round.",
     benefits: ["Web & business apps", "Process automation", "Ongoing maintenance"],
     span: "lg:col-span-2",
     accent: "bg-blue-500",
@@ -110,7 +110,7 @@ const services: Service[] = [
     icon: Rocket,
     title: "Digital Transformation",
     description:
-      "Move from paper and spreadsheets to connected digital systems, step by step. We modernise your tools, migrate your data and train your people — so change actually sticks.",
+      "Move from paper and spreadsheets to connected digital systems, step by step. We modernise your tools, migrate your data and train your people, so change actually sticks.",
     benefits: ["Legacy system modernisation", "Data migration", "Change management & training"],
     span: "lg:col-span-4",
     accent: "bg-pink-500",
@@ -120,7 +120,7 @@ const services: Service[] = [
     icon: Wrench,
     title: "Technical Support",
     description:
-      "Computer and projector repair for all brands, performance upgrades across hardware and software, and instant online remote support — an engineer connects to your machine and fixes the issue while you watch.",
+      "Computer and projector repair for all brands, performance upgrades across hardware and software, and instant online remote support. An engineer connects to your machine and fixes the issue while you watch.",
     benefits: [
       "Computer & projector repair",
       "Performance upgrades",
@@ -146,7 +146,7 @@ const specialties = [
   {
     icon: LockKeyhole,
     title: "Ransomware Response",
-    description: "Calm, guided decryption and recovery when the worst happens — then protection so it never repeats.",
+    description: "Calm, guided decryption and recovery when the worst happens. Then protection so it never repeats.",
   },
   {
     icon: MonitorSmartphone,
@@ -193,7 +193,7 @@ const process = [
     iconName: "consult",
     step: "01",
     title: "Discover",
-    description: "We listen first — understanding your goals, systems and pain points before proposing anything.",
+    description: "We listen first. Understanding your goals, systems and pain points before proposing anything.",
   },
   {
     iconName: "plan",
@@ -211,7 +211,7 @@ const process = [
     iconName: "support",
     step: "04",
     title: "Support",
-    description: "We stay with you — monitoring, maintaining and improving long after go-live.",
+    description: "We stay with you. Monitoring, maintaining and improving long after go-live.",
   },
 ];
 
@@ -319,7 +319,7 @@ export default function ServicesPage() {
       <HowItWorks
         eyebrow="How we work"
         title="A simple process, from first call to long-term care"
-        description="Every engagement follows the same four steps — so you always know exactly where things stand."
+        description="Every engagement follows the same four steps so you always know exactly where things stand."
         steps={process.map((phase) => ({
           n: phase.step,
           icon: phase.iconName,
