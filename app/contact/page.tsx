@@ -50,7 +50,7 @@ const channels = [
   {
     icon: Clock,
     title: "Emergency support",
-    detail: "24/7 for Indakangwa clients",
+    detail: "24/7 on The Fearless plan",
     sub: "Priority line for package holders",
     href: "/packages",
   },
@@ -83,7 +83,7 @@ const faqs = [
   {
     question: "Do you offer on-site visits?",
     answer:
-      "Yes, throughout Mombasa — by appointment. Call or message us to book a time, and we'll come to you; Ingabo and Indakangwa package clients get same-day appointments. Visits outside Mombasa are arranged with transparent travel costs.",
+      "Yes, throughout Mombasa — by appointment. Call or message us to book a time, and we'll come to you; The Shield and The Fearless package clients get same-day appointments. Visits outside Mombasa are arranged with transparent travel costs.",
   },
   {
     question: "Can I just walk in with my laptop?",

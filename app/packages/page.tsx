@@ -12,7 +12,7 @@ import { breadcrumbJsonLd, packagesJsonLd, faqJsonLd, pageAlternates } from "@/l
 export const metadata: Metadata = {
   title: "IT Support Packages & Pricing in Kenya — From KSh 1,000/Month",
   description:
-    "Affordable monthly IT support packages in Mombasa, Kenya: Ingenzi – The Champion (KSh 1,000), Inyamibwa – The Graceful (KSh 2,000), Ingabo – The Shield (KSh 3,000) and Indakangwa – The Fearless (KSh 5,000). Priority support, on-site visits, no lock-in contracts.",
+    "Affordable monthly IT support packages in Mombasa, Kenya: The Champion (KSh 1,000), The Graceful (KSh 2,000), The Shield (KSh 3,000) and The Fearless (KSh 5,000). Priority support, on-site visits, no lock-in contracts.",
   alternates: pageAlternates("/packages/"),
   openGraph: {
     title: "IT Support Packages & Pricing in Kenya | Zeisnet Kenya",
@@ -26,8 +26,7 @@ const delay = (ms: number) => ({ "--reveal-delay": `${ms}ms` }) as CSSProperties
 
 const plans = [
   {
-    name: "Ingenzi",
-    meaning: "The Champion",
+    name: "The Champion",
     price: "1,000",
     audience: "Individuals & home offices",
     featured: false,
@@ -40,8 +39,7 @@ const plans = [
     ],
   },
   {
-    name: "Inyamibwa",
-    meaning: "The Graceful",
+    name: "The Graceful",
     price: "2,000",
     audience: "Small teams getting started",
     featured: false,
@@ -54,8 +52,7 @@ const plans = [
     ],
   },
   {
-    name: "Ingabo",
-    meaning: "The Shield",
+    name: "The Shield",
     price: "3,000",
     audience: "Growing SMEs",
     featured: true,
@@ -68,8 +65,7 @@ const plans = [
     ],
   },
   {
-    name: "Indakangwa",
-    meaning: "The Fearless",
+    name: "The Fearless",
     price: "5,000",
     audience: "Organisations that can't stop",
     featured: false,
@@ -100,12 +96,12 @@ const faqs = [
   {
     question: "Can I change my package later?",
     answer:
-      "Yes — upgrade or downgrade at any month-end with no penalty. Most clients start with Inyamibwa or Ingabo and adjust once they see their real usage.",
+      "Yes — upgrade or downgrade at any month-end with no penalty. Most clients start with The Graceful or The Shield and adjust once they see their real usage.",
   },
   {
     question: "What counts as a covered device?",
     answer:
-      "Any laptop, desktop or projector registered under your plan. Servers and network equipment are covered from the Ingabo plan upward.",
+      "Any laptop, desktop or projector registered under your plan. Servers and network equipment are covered from The Shield plan upward.",
   },
   {
     question: "Is there a contract or minimum term?",
@@ -176,10 +172,7 @@ export default function PackagesPage() {
                 <h2 className={`font-display text-2xl font-bold ${plan.featured ? "text-white" : "text-night-900"}`}>
                   {plan.name}
                 </h2>
-                <p className={`mt-0.5 text-sm italic ${plan.featured ? "text-accent-300" : "text-brand-600"}`}>
-                  “{plan.meaning}”
-                </p>
-                <p className={`mt-3 text-sm ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>{plan.audience}</p>
+                <p className={`mt-2 text-sm ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>{plan.audience}</p>
 
                 <p className="mt-6 flex items-baseline gap-1.5">
                   <span className={`text-sm font-semibold ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>KSh</span>

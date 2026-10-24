@@ -25,7 +25,7 @@ Hosting: the site is a fully static export — see [DEPLOYMENT.md](DEPLOYMENT.md
 | `/` | Home — hero, trust bar, services, why-us, solutions, capacity band, packages preview, testimonials, CTA |
 | `/services` | Services — bento grid of 7 practices, specialist strip, 4-step process |
 | `/capacity-building` | Training — 4 tracks / 30+ modules, learning timeline, trainers, benefits |
-| `/packages` | Pricing — 4 plans in KSh (Ingenzi – The Champion → Indakangwa – The Fearless), comparison table, FAQs |
+| `/packages` | Pricing — 4 plans in KSh (The Champion → The Fearless; the Rwanda site uses the Kinyarwanda names), comparison table, FAQs |
 | `/contact` | Contact — channel cards, form, map, socials, FAQs |
 
 See [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md) for the full design language (colors, type, components, motion).

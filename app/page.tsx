@@ -379,10 +379,10 @@ export default function HomePage() {
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { name: "Ingenzi", meaning: "The Champion", price: "1,000", note: "For individuals & home offices" },
-              { name: "Inyamibwa", meaning: "The Graceful", price: "2,000", note: "For small teams getting started" },
-              { name: "Ingabo", meaning: "The Shield", price: "3,000", note: "Most popular for growing SMEs", featured: true },
-              { name: "Indakangwa", meaning: "The Fearless", price: "5,000", note: "For organisations that can't stop" },
+              { name: "The Champion", price: "1,000", note: "For individuals & home offices" },
+              { name: "The Graceful", price: "2,000", note: "For small teams getting started" },
+              { name: "The Shield", price: "3,000", note: "Most popular for growing SMEs", featured: true },
+              { name: "The Fearless", price: "5,000", note: "For organisations that can't stop" },
             ].map((plan, i) => (
               <Link
                 key={plan.name}
@@ -403,7 +403,6 @@ export default function HomePage() {
                 <h3 className={`font-display text-lg font-bold ${plan.featured ? "text-white" : "text-night-900"}`}>
                   {plan.name}
                 </h3>
-                <p className={`text-sm italic ${plan.featured ? "text-accent-300" : "text-brand-600"}`}>“{plan.meaning}”</p>
                 <p className={`mt-1 text-xs ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>{plan.note}</p>
                 <p className="mt-5">
                   <span className={`mr-1 text-sm ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>KSh</span>
