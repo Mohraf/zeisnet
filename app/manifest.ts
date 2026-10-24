@@ -4,10 +4,10 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Zeisnet — IT Services & Technology Solutions, Kigali",
+    name: "Zeisnet Kenya — IT Services & Technology Solutions, Mombasa",
     short_name: "Zeisnet",
     description:
-      "IT consulting, cloud, cybersecurity, networking and digital skills training for businesses in Kigali, Rwanda and across Africa.",
+      "IT consulting, cloud, cybersecurity, networking and digital skills training for businesses in Mombasa, Kenya and across Africa.",
     start_url: "/",
     display: "standalone",
     background_color: "#050a16",

@@ -22,15 +22,15 @@ import { HowItWorks } from "@/components/how-it-works";
 import { CtaSection } from "@/components/cta-section";
 import { Faq } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbJsonLd, servicesJsonLd, faqJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, servicesJsonLd, faqJsonLd, pageAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "IT Services in Kigali, Rwanda — Consulting, Cloud, Cybersecurity & Support",
+  title: "IT Services in Mombasa, Kenya — Consulting, Cloud, Cybersecurity & Support",
   description:
-    "Full-service IT in Kigali: consulting, networking, cloud & Microsoft 365, software development, cybersecurity, digital transformation and computer repair. Serving businesses across Rwanda, East Africa and worldwide via remote support.",
-  alternates: { canonical: "/services/" },
+    "Full-service IT in Mombasa: consulting, networking, cloud & Microsoft 365, software development, cybersecurity, digital transformation and computer repair. Serving businesses across Kenya, East Africa and worldwide via remote support.",
+  alternates: pageAlternates("/services/"),
   openGraph: {
-    title: "IT Services in Kigali, Rwanda | Zeisnet",
+    title: "IT Services in Mombasa, Kenya | Zeisnet Kenya",
     description:
       "Consulting, networking, cloud, software, cybersecurity, digital transformation and technical support. One accountable IT partner.",
     url: "/services/",
@@ -47,6 +47,9 @@ type Service = {
   benefits: string[];
   span: string;
   accent: string;
+  /** Practices with their own landing page link there instead of straight to contact. */
+  href?: string;
+  cta?: string;
 };
 
 const services: Service[] = [
@@ -100,10 +103,12 @@ const services: Service[] = [
     icon: Code2,
     title: "Software Development",
     description:
-      "Custom web and business applications built around your real workflows, not the other way round.",
-    benefits: ["Web & business apps", "Process automation", "Ongoing maintenance"],
+      "Custom web applications, mobile apps and integrations built around your real workflows, not the other way round.",
+    benefits: ["Web apps & business systems", "Mobile apps", "Integrations & automation", "Ongoing maintenance"],
     span: "lg:col-span-2",
     accent: "bg-blue-500",
+    href: "/software-development",
+    cta: "Explore software development",
   },
   {
     id: "transformation",
@@ -157,24 +162,24 @@ const specialties = [
 
 const faqs = [
   {
-    question: "Do you offer computer repair in Kigali?",
+    question: "Do you offer computer repair in Mombasa?",
     answer:
-      "Yes. We repair laptops, desktops and projectors of all brands at our workshop in Tropical Plaza on KN 82 Street, Kigali, and offer on-site and at-home repair across the city. Most repairs are diagnosed the same day, and walk-ins are welcome Monday to Saturday.",
+      "Yes. We repair laptops, desktops and projectors of all brands at our workshop in ECB Centre on Moi Avenue, Mombasa, and offer on-site and at-home repair across the city. Most repairs are diagnosed the same day, and walk-ins are welcome Monday to Saturday.",
   },
   {
-    question: "Which IT services does Zeisnet provide in Rwanda?",
+    question: "Which IT services does Zeisnet provide in Kenya?",
     answer:
-      "Zeisnet delivers the full range of IT services across Kigali and Rwanda: IT consulting, cloud and Microsoft 365, cybersecurity, networking, software development, digital transformation, and technical support including data recovery, data wiping and ransomware response. Remote support is available anywhere in Rwanda and beyond.",
+      "Zeisnet delivers the full range of IT services across Mombasa and Kenya: IT consulting, cloud and Microsoft 365, cybersecurity, networking, software development, digital transformation, and technical support including data recovery, data wiping and ransomware response. Remote support is available anywhere in Kenya and beyond.",
   },
   {
-    question: "How much do IT services cost in Kigali?",
+    question: "How much do IT services cost in Mombasa?",
     answer:
-      "One-off repairs and projects are quoted up front with no hidden costs, and the first consultation is always free. For ongoing support, our monthly packages start at 10,000 RWF — priced specifically for the Rwandan market. We'll always give a clear, fixed quote before any billable work begins.",
+      "One-off repairs and projects are quoted up front with no hidden costs, and the first consultation is always free. For ongoing support, our monthly packages start at KSh 1,000 — priced specifically for the Kenyan market. We'll always give a clear, fixed quote before any billable work begins.",
   },
   {
-    question: "Do you provide Microsoft 365 and cloud setup for businesses in Rwanda?",
+    question: "Do you provide Microsoft 365 and cloud setup for businesses in Kenya?",
     answer:
-      "Yes. We handle Microsoft 365 licensing and administration end to end — users, devices, Exchange, SharePoint, Teams and Azure AD — plus cloud migration and managed infrastructure, so your team can work securely from anywhere in Rwanda or abroad.",
+      "Yes. We handle Microsoft 365 licensing and administration end to end — users, devices, Exchange, SharePoint, Teams and Azure AD — plus cloud migration and managed infrastructure, so your team can work securely from anywhere in Kenya or abroad.",
   },
   {
     question: "Can you help after a ransomware attack or data loss?",
@@ -182,9 +187,9 @@ const faqs = [
       "Yes. Our cybersecurity team guides you through decryption, recovery and hardening after ransomware, and our data recovery specialists rescue lost or corrupted files from hard drives, SSDs and other storage. Contact us as soon as possible for the best chance of full recovery.",
   },
   {
-    question: "Do you serve businesses outside Kigali?",
+    question: "Do you serve businesses outside Mombasa?",
     answer:
-      "Remote support reaches anywhere in Rwanda and across East Africa. On-site visits outside Kigali are arranged case by case with transparent travel costs, so organisations anywhere in the country can work with us.",
+      "Remote support reaches anywhere in Kenya and across East Africa. On-site visits outside Mombasa are arranged case by case with transparent travel costs, so organisations anywhere in the country can work with us.",
   },
 ];
 
@@ -224,7 +229,9 @@ export default function ServicesPage() {
           { name: "Services", path: "/services" },
         ])}
       />
-      <JsonLd data={servicesJsonLd(services.map(({ title, description, id }) => ({ title, description, id })))} />
+      <JsonLd
+        data={servicesJsonLd(services.map(({ title, description, id, href }) => ({ title, description, id, href })))}
+      />
       <JsonLd data={faqJsonLd(faqs)} />
       <PageHero
         eyebrow="Our services"
@@ -233,7 +240,7 @@ export default function ServicesPage() {
             One partner for <span className="text-gradient">every layer</span> of your technology
           </>
         }
-        description="Seven practices, delivered by certified engineers in Kigali. Whether you need a single repair or a complete digital transformation, we bring the same care and clarity to every job."
+        description="Seven practices, delivered by certified engineers in Kenya. Whether you need a single repair or a complete digital transformation, we bring the same care and clarity to every job."
       >
         <Button href="/contact" size="lg">
           Request a service
@@ -275,8 +282,13 @@ export default function ServicesPage() {
                   ))}
                 </ul>
                 <div className="relative mt-8">
-                  <Button href="/contact" variant="ghost" size="sm" className="-ml-3 text-brand-600 hover:bg-brand-50 hover:text-brand-700">
-                    Get started
+                  <Button
+                    href={service.href ?? "/contact"}
+                    variant="ghost"
+                    size="sm"
+                    className="-ml-3 text-brand-600 hover:bg-brand-50 hover:text-brand-700"
+                  >
+                    {service.cta ?? "Get started"}
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
                   </Button>
                 </div>
@@ -333,8 +345,8 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-4xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Questions"
-            title="IT services in Kigali & Rwanda — FAQs"
-            description="The things businesses across Rwanda ask us most before getting started."
+            title="IT services in Mombasa & Kenya — FAQs"
+            description="The things businesses across Kenya ask us most before getting started."
           />
           <div className="mt-12" data-reveal>
             <Faq items={faqs} />

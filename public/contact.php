@@ -4,18 +4,21 @@
  *
  * Runs on cPanel/Apache alongside the static Next.js export (it lives in
  * public/ so it is copied to out/ and uploaded to public_html). The static
- * front-end POSTs the form here and this script emails mack@zeisnet.com
+ * front-end POSTs the form here and this script emails support@zeisnet.co.ke
  * using the server's local mail transport — no Node server or third-party
  * API required.
  */
 
 // ---- Configuration ------------------------------------------------------
-$RECIPIENT = 'mack@zeisnet.com';
+$RECIPIENT = 'support@zeisnet.co.ke';
 // From address should belong to this domain so it aligns with SPF/DKIM and
 // is not flagged as spam. Create this address in cPanel (or use an existing
 // one). It is NOT where replies go — that is the visitor (see Reply-To).
-$FROM = 'noreply@zeisnet.com';
-$FROM_NAME = 'Zeisnet Website';
+$FROM = 'noreply@zeisnet.co.ke';
+$FROM_NAME = 'Zeisnet Kenya Website';
+
+// Timestamp emails in Kenyan time (EAT), not the host's server timezone.
+date_default_timezone_set('Africa/Nairobi');
 
 // ---- Only accept POST ---------------------------------------------------
 header('Content-Type: application/json; charset=utf-8');
@@ -74,7 +77,7 @@ $fullName  = noNewlines($firstName . ' ' . $lastName);
 $subject = "New enquiry: {$topic} — {$fullName}";
 
 $bodyLines = [
-    "New contact-form submission from zeisnet.com",
+    "New contact-form submission from zeisnet.co.ke",
     str_repeat('-', 44),
     "Name:    {$firstName} {$lastName}",
     "Email:   {$email}",
@@ -85,7 +88,7 @@ $bodyLines = [
     $message,
     "",
     str_repeat('-', 44),
-    "Sent " . date('D, d M Y H:i:s') . " (server time)",
+    "Sent " . date('D, d M Y H:i:s') . " (EAT)",
 ];
 $body = implode("\n", $bodyLines);
 
@@ -111,6 +114,6 @@ if ($sent) {
     http_response_code(500);
     echo json_encode([
         'ok' => false,
-        'error' => 'The message could not be sent right now. Please email mack@zeisnet.com directly.',
+        'error' => 'The message could not be sent right now. Please email support@zeisnet.co.ke directly.',
     ]);
 }

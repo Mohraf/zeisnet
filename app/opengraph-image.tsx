@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
 
-export const alt = "Zeisnet — Software Development & IT Services · Kigali & Worldwide";
+export const alt = "Zeisnet Kenya — Software Development & IT Services · Kenya & Worldwide";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -66,8 +66,8 @@ export default function OgImage() {
             color: "#67e8f9",
           }}
         >
-          <div style={{ display: "flex" }}>zeisnet.com</div>
-          <div style={{ display: "flex", color: "#94a3b8" }}>Kigali, Rwanda · Serving Africa &amp; beyond</div>
+          <div style={{ display: "flex" }}>zeisnet.co.ke</div>
+          <div style={{ display: "flex", color: "#94a3b8" }}>Mombasa, Kenya · Serving Africa &amp; beyond</div>
         </div>
       </div>
     ),

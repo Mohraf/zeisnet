@@ -1,4 +1,4 @@
-# Deploying the Zeisnet Website to cPanel
+# Deploying the Zeisnet Kenya Website to cPanel
 
 The site builds to a **fully static export** — plain HTML, CSS and JS. No Node.js
 app, no server process, nothing to keep running. It works on any cPanel shared
@@ -58,14 +58,14 @@ public_html/
 
 ## 3. Enable HTTPS
 
-In cPanel → **SSL/TLS Status**, run **AutoSSL** for `zeisnet.com` (free
+In cPanel → **SSL/TLS Status**, run **AutoSSL** for `zeisnet.co.ke` (free
 Let's Encrypt certificate). The `.htaccess` already redirects all HTTP and
-`www.` traffic to `https://zeisnet.com`.
+`www.` traffic to `https://zeisnet.co.ke`.
 
 ## 4. After going live
 
 1. **Google Search Console** — verify the domain and submit
-   `https://zeisnet.com/sitemap.xml`.
+   `https://zeisnet.co.ke/sitemap.xml`.
 2. **Google Business Profile** — create/claim it with the exact same
    name, address and phone as the website.
 3. Test social previews at [opengraph.xyz](https://www.opengraph.xyz) and

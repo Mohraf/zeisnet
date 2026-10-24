@@ -7,17 +7,17 @@ import { PageHero } from "@/components/page-hero";
 import { CtaSection } from "@/components/cta-section";
 import { Faq } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbJsonLd, packagesJsonLd, faqJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, packagesJsonLd, faqJsonLd, pageAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "IT Support Packages & Pricing in Rwanda — From 10,000 RWF/Month",
+  title: "IT Support Packages & Pricing in Kenya — From KSh 1,000/Month",
   description:
-    "Affordable monthly IT support packages in Kigali, Rwanda: Ingenzi (10,000 RWF), Inyamibwa (20,000 RWF), Ingabo (30,000 RWF) and Indakangwa (50,000 RWF). Priority support, on-site visits, no lock-in contracts.",
-  alternates: { canonical: "/packages/" },
+    "Affordable monthly IT support packages in Mombasa, Kenya: Ingenzi – The Champion (KSh 1,000), Inyamibwa – The Graceful (KSh 2,000), Ingabo – The Shield (KSh 3,000) and Indakangwa – The Fearless (KSh 5,000). Priority support, on-site visits, no lock-in contracts.",
+  alternates: pageAlternates("/packages/"),
   openGraph: {
-    title: "IT Support Packages & Pricing in Rwanda | Zeisnet",
+    title: "IT Support Packages & Pricing in Kenya | Zeisnet Kenya",
     description:
-      "Four monthly IT support plans from 10,000 RWF — remote support, on-site visits, monitoring and Microsoft 365 administration. Month to month, no lock-in.",
+      "Four monthly IT support plans from KSh 1,000 — remote support, on-site visits, monitoring and Microsoft 365 administration. Month to month, no lock-in.",
     url: "/packages/",
   },
 };
@@ -28,7 +28,7 @@ const plans = [
   {
     name: "Ingenzi",
     meaning: "The Champion",
-    price: "10,000",
+    price: "1,000",
     audience: "Individuals & home offices",
     featured: false,
     features: [
@@ -42,7 +42,7 @@ const plans = [
   {
     name: "Inyamibwa",
     meaning: "The Graceful",
-    price: "20,000",
+    price: "2,000",
     audience: "Small teams getting started",
     featured: false,
     features: [
@@ -56,12 +56,12 @@ const plans = [
   {
     name: "Ingabo",
     meaning: "The Shield",
-    price: "30,000",
+    price: "3,000",
     audience: "Growing SMEs",
     featured: true,
     features: [
       "Up to 8 covered devices",
-      "Same-day on-site support (Kigali)",
+      "Same-day on-site support (Mombasa)",
       "Network & backup monitoring",
       "Microsoft 365 admin support",
       "15% off repairs & training",
@@ -70,7 +70,7 @@ const plans = [
   {
     name: "Indakangwa",
     meaning: "The Fearless",
-    price: "50,000",
+    price: "5,000",
     audience: "Organisations that can't stop",
     featured: false,
     features: [
@@ -86,7 +86,7 @@ const plans = [
 const comparison: { feature: string; values: (boolean | string)[] }[] = [
   { feature: "Covered devices", values: ["1", "3", "8", "20"] },
   { feature: "Remote support", values: ["Business hours", "Priority", "Priority", "24/7"] },
-  { feature: "On-site visits (Kigali)", values: [false, "On request", "Same-day", "Same-day"] },
+  { feature: "On-site visits (Mombasa)", values: [false, "On request", "Same-day", "Same-day"] },
   { feature: "Device health checks", values: ["Quarterly", "Monthly", "Monthly", "Weekly"] },
   { feature: "Antivirus & update monitoring", values: [false, true, true, true] },
   { feature: "Network & backup monitoring", values: [false, false, true, true] },
@@ -118,9 +118,9 @@ const faqs = [
       "You simply pay the standard rate minus your package discount. We'll always quote before doing any billable work.",
   },
   {
-    question: "Do you support organisations outside Kigali?",
+    question: "Do you support organisations outside Mombasa?",
     answer:
-      "Remote support works anywhere in Rwanda. On-site visits outside Kigali are arranged case by case with transparent travel costs.",
+      "Remote support works anywhere in Kenya. On-site visits outside Mombasa are arranged case by case with transparent travel costs.",
   },
 ];
 
@@ -145,10 +145,10 @@ export default function PackagesPage() {
         eyebrow="Our packages"
         title={
           <>
-            Predictable IT support, <span className="text-gradient">priced for Rwanda</span>
+            Predictable IT support, <span className="text-gradient">priced for Kenya</span>
           </>
         }
-        description="Four monthly plans named after the qualities they bring to your business. Champion, graceful, shield, fearless. No hidden fees, no long contracts, cancel any month."
+        description="Four monthly plans, each named for the quality it brings to your business: the Champion, the Graceful, the Shield and the Fearless. No hidden fees, no long contracts, cancel any month."
       />
 
       {/* ========================== PRICING CARDS ========================= */}
@@ -182,10 +182,11 @@ export default function PackagesPage() {
                 <p className={`mt-3 text-sm ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>{plan.audience}</p>
 
                 <p className="mt-6 flex items-baseline gap-1.5">
+                  <span className={`text-sm font-semibold ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>KSh</span>
                   <span className={`font-display text-4xl font-bold ${plan.featured ? "text-white" : "text-night-900"}`}>
                     {plan.price}
                   </span>
-                  <span className={`text-sm ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>RWF / month</span>
+                  <span className={`text-sm ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>/ month</span>
                 </p>
 
                 <ul className={`mt-7 flex-1 space-y-3 border-t pt-7 ${plan.featured ? "border-white/10" : "border-slate-100"}`}>
@@ -215,7 +216,7 @@ export default function PackagesPage() {
           </div>
 
           <p className="mt-10 text-center text-sm text-slate-500" data-reveal>
-            All prices in Rwandan Francs (RWF), billed monthly. Need more than 20 devices?{" "}
+            All prices in Kenya Shillings (KSh), billed monthly. Need more than 20 devices?{" "}
             <a href="/contact" className="font-semibold text-brand-600 underline-offset-4 hover:underline">
               Ask about enterprise plans →
             </a>
@@ -249,7 +250,7 @@ export default function PackagesPage() {
                       >
                         {plan.name}
                       </span>
-                      <span className="block text-xs font-normal text-slate-500">{plan.price} RWF/mo</span>
+                      <span className="block text-xs font-normal text-slate-500">KSh {plan.price}/mo</span>
                     </th>
                   ))}
                 </tr>

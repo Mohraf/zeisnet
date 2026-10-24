@@ -1,5 +1,5 @@
 const WHATSAPP_URL =
-  "https://wa.me/250787186250?text=" +
+  "https://wa.me/254722536771?text=" +
   encodeURIComponent("Hello Zeisnet! I'd like to ask about your services.");
 
 function WhatsappIcon(props: React.SVGProps<SVGSVGElement>) {

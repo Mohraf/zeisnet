@@ -42,12 +42,12 @@ export function ContactForm() {
         setStatus("sent");
       } else {
         setStatus("error");
-        setError(data?.error ?? "Something went wrong. Please email mack@zeisnet.com directly.");
+        setError(data?.error ?? "Something went wrong. Please email support@zeisnet.co.ke directly.");
       }
     } catch {
       setStatus("error");
       setError(
-        "We couldn't reach the server. Please check your connection or email mack@zeisnet.com directly.",
+        "We couldn't reach the server. Please check your connection or email support@zeisnet.co.ke directly.",
       );
     }
   }
@@ -103,7 +103,7 @@ export function ContactForm() {
           <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-night-900">
             Phone <span className="font-normal text-slate-400">(optional)</span>
           </label>
-          <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="+250 7XX XXX XXX" className={inputClasses} />
+          <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="+254 7XX XXX XXX" className={inputClasses} />
         </div>
       </div>
 

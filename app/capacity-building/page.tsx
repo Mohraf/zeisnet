@@ -22,17 +22,17 @@ import { PageHero } from "@/components/page-hero";
 import { HowItWorks } from "@/components/how-it-works";
 import { CtaSection } from "@/components/cta-section";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbJsonLd, coursesJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, coursesJsonLd, pageAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "IT Training & Capacity Building in Kigali, Rwanda — Digital Skills for Teams",
+  title: "IT Training & Capacity Building in Mombasa, Kenya — Digital Skills for Teams",
   description:
-    "Hands-on IT training in Kigali: 30+ modules covering Microsoft Office, Excel, Adobe Creative Suite, networking and hardware. On-site or online capacity building for organisations in Rwanda, East Africa and across Africa.",
-  alternates: { canonical: "/capacity-building/" },
+    "Hands-on IT training in Mombasa: 30+ modules covering Microsoft Office, Excel, Adobe Creative Suite, networking and hardware. On-site or online capacity building for organisations in Kenya, East Africa and across Africa.",
+  alternates: pageAlternates("/capacity-building/"),
   openGraph: {
-    title: "IT Training & Capacity Building in Kigali, Rwanda | Zeisnet",
+    title: "IT Training & Capacity Building in Mombasa, Kenya | Zeisnet Kenya",
     description:
-      "30+ hands-on digital skills modules — Microsoft Office, Adobe, networking, hardware. Delivered on-site in Kigali or live online across Africa.",
+      "30+ hands-on digital skills modules — Microsoft Office, Adobe, networking, hardware. Delivered on-site in Mombasa or live online across Africa.",
     url: "/capacity-building/",
   },
 };
@@ -124,7 +124,7 @@ const trainers = [
     icon: Server,
     title: "Networking & infrastructure",
     description:
-      "Engineers who design and secure business networks across Kigali bring live scenarios into every session.",
+      "Engineers who design and secure business networks across Kenya bring live scenarios into every session.",
   },
   {
     icon: PenTool,

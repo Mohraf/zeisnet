@@ -32,18 +32,19 @@ import { LogoMarquee } from "@/components/logo-marquee";
 import { CtaSection } from "@/components/cta-section";
 import { site } from "@/lib/site";
 import { reviews as testimonials } from "@/lib/reviews";
+import { pageAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Zeisnet — Software Development & IT Services | Kigali, Rwanda & Worldwide",
+    absolute: "Zeisnet Kenya — Software Development & IT Services | Mombasa, Kenya & Worldwide",
   },
   description:
-    "Zeisnet is a technology company rooted in Kigali, Rwanda, delivering software development, IT consulting, cloud, cybersecurity, networking, computer repair and digital skills training to organisations in Rwanda, across Africa and beyond — on-site locally and remotely worldwide. Free consultation.",
-  alternates: { canonical: "/" },
+    "Zeisnet Kenya is a technology company based in Mombasa, delivering software development, IT consulting, cloud, cybersecurity, networking, computer repair and digital skills training to organisations in Kenya, across Africa and beyond — on-site locally and remotely worldwide. Free consultation.",
+  alternates: pageAlternates("/"),
   openGraph: {
-    title: "Zeisnet — Software Development & IT Services · Kigali to the World",
+    title: "Zeisnet Kenya — Software Development & IT Services · Kenya to the World",
     description:
-      "Software development, IT consulting, cloud, cybersecurity, networking and repairs — from our home in Kigali to clients across Africa and beyond. Free consultation.",
+      "Software development, IT consulting, cloud, cybersecurity, networking and repairs — from our home in Kenya to clients across Africa and beyond. Free consultation.",
     url: "/",
   },
 };
@@ -62,6 +63,12 @@ const stats = [
 ];
 
 const services = [
+  {
+    icon: Code2,
+    title: "Software Development",
+    description: "Custom web apps, mobile apps and integrations built for how you actually work.",
+    href: "/software-development",
+  },
   {
     icon: Lightbulb,
     title: "IT Consulting",
@@ -85,12 +92,6 @@ const services = [
     title: "Networking Solutions",
     description: "Design, deployment and security of fast, reliable business networks.",
     href: "/services#networking",
-  },
-  {
-    icon: Code2,
-    title: "Software Development",
-    description: "Custom web and business applications built for how you actually work.",
-    href: "/services#software",
   },
   {
     icon: Wrench,
@@ -119,7 +120,7 @@ const whyPoints = [
   {
     icon: Gauge,
     title: "Fair, transparent pricing",
-    description: "Packages designed for the Rwandan market, with no surprises and satisfaction guaranteed.",
+    description: "Packages designed for the Kenyan market, with no surprises and satisfaction guaranteed.",
   },
 ];
 
@@ -171,7 +172,7 @@ export default function HomePage() {
         <div className="relative mx-auto grid w-full max-w-7xl items-start gap-16 px-5 pb-24 pt-36 sm:px-8 lg:grid-cols-2 lg:py-32">
           <div className="flex flex-col items-start gap-7">
             <div data-reveal>
-              <FramedTag tone="light">Rooted in Kigali · Delivering worldwide</FramedTag>
+              <FramedTag tone="light">Rooted in Mombasa · Delivering worldwide</FramedTag>
             </div>
             <div data-reveal="mask" style={delay(80)}>
               <h1 className="font-display text-4xl font-bold leading-[1.06] tracking-tight text-balance text-white sm:text-5xl lg:text-[3.6rem]">
@@ -180,7 +181,7 @@ export default function HomePage() {
             </div>
             <p className="max-w-xl text-lg leading-relaxed text-slate-300" data-reveal style={delay(160)}>
               From custom software and cloud to cybersecurity, networks and repairs, Zeisnet helps
-              organisations in Rwanda, across Africa and beyond{" "}
+              organisations in Kenya, across Africa and beyond{" "}
               <span className="font-semibold text-white">build, run and protect</span> the technology they
               depend on.
             </p>
@@ -270,7 +271,7 @@ export default function HomePage() {
                   Technology decisions you can <span className="text-gradient">actually trust</span>
                 </>
               }
-              description="We've built our reputation on straight answers, honest pricing and work that holds up for clients in Kigali and around the world. That's why businesses keep coming back."
+              description="We've built our reputation on straight answers, honest pricing and work that holds up for clients across Kenya and around the world. That's why businesses keep coming back."
             />
             <div className="mt-10" data-reveal>
               <Button href="/contact">
@@ -373,15 +374,15 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Support packages"
             title="Predictable IT costs, four simple plans"
-            description="Monthly support packages named after what they are: your champions, your guardians, your unshakeables."
+            description="Four monthly plans, each named for what it brings you: the Champion, the Graceful, the Shield and the Fearless."
           />
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { name: "Ingenzi", price: "10,000", note: "For individuals & home offices" },
-              { name: "Inyamibwa", price: "20,000", note: "For small teams getting started" },
-              { name: "Ingabo", price: "30,000", note: "Most popular for growing SMEs", featured: true },
-              { name: "Indakangwa", price: "50,000", note: "For organisations that can't stop" },
+              { name: "Ingenzi", meaning: "The Champion", price: "1,000", note: "For individuals & home offices" },
+              { name: "Inyamibwa", meaning: "The Graceful", price: "2,000", note: "For small teams getting started" },
+              { name: "Ingabo", meaning: "The Shield", price: "3,000", note: "Most popular for growing SMEs", featured: true },
+              { name: "Indakangwa", meaning: "The Fearless", price: "5,000", note: "For organisations that can't stop" },
             ].map((plan, i) => (
               <Link
                 key={plan.name}
@@ -402,12 +403,14 @@ export default function HomePage() {
                 <h3 className={`font-display text-lg font-bold ${plan.featured ? "text-white" : "text-night-900"}`}>
                   {plan.name}
                 </h3>
+                <p className={`text-sm italic ${plan.featured ? "text-accent-300" : "text-brand-600"}`}>“{plan.meaning}”</p>
                 <p className={`mt-1 text-xs ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>{plan.note}</p>
                 <p className="mt-5">
+                  <span className={`mr-1 text-sm ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>KSh</span>
                   <span className={`font-display text-3xl font-bold ${plan.featured ? "text-white" : "text-night-900"}`}>
                     {plan.price}
                   </span>
-                  <span className={`ml-1 text-sm ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>RWF/mo</span>
+                  <span className={`ml-1 text-sm ${plan.featured ? "text-slate-400" : "text-slate-500"}`}>/mo</span>
                 </p>
                 <span
                   className={`mt-6 inline-flex items-center gap-1.5 text-sm font-semibold ${
@@ -431,7 +434,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Success stories"
             title="What our clients say"
-            description="Real, 5-star reviews from the people and businesses we've helped, straight from our Google profile."
+            description="Real 5-star Google reviews from clients of our Kigali office. The same standard of service we now bring to Kenya."
           />
 
           <div className="mt-16 grid gap-6 lg:grid-cols-3">

@@ -8,17 +8,17 @@ import { ContactForm } from "@/components/contact-form";
 import { Faq } from "@/components/faq";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbJsonLd, faqJsonLd, SITE_URL } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, pageAlternates, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Contact Zeisnet — IT Support in Kigali, Rwanda | Free Consultation",
+  title: "Contact Zeisnet — IT Support in Mombasa, Kenya | Free Consultation",
   description:
-    "Contact Zeisnet IT services in Kigali: call (+250) 787 186 250, WhatsApp, email mack@zeisnet.com, or visit Tropical Plaza, KN 82 Street. Free consultations for businesses in Rwanda and across Africa — response within one business day.",
-  alternates: { canonical: "/contact/" },
+    "Contact Zeisnet IT services in Mombasa: call (+254) 722 536 771, WhatsApp, email support@zeisnet.co.ke, or visit ECB Centre, 2nd Floor, Moi Avenue. Free consultations for businesses in Kenya and across Africa — response within one business day.",
+  alternates: pageAlternates("/contact/"),
   openGraph: {
-    title: "Contact Zeisnet — IT Support in Kigali, Rwanda",
+    title: "Contact Zeisnet — IT Support in Mombasa, Kenya",
     description:
-      "Call, WhatsApp or visit us at Tropical Plaza, KN 82 Street, Kigali. Free consultations, response within one business day.",
+      "Call, WhatsApp or visit us at ECB Centre, Moi Avenue, Mombasa. Free consultations, response within one business day.",
     url: "/contact/",
   },
 };
@@ -43,8 +43,8 @@ const channels = [
   {
     icon: MapPin,
     title: "Visit us",
-    detail: "Tropical Plaza, 4th Floor",
-    sub: `KN 82 Street, ${site.city}`,
+    detail: "ECB Centre, 2nd Floor",
+    sub: `Moi Avenue – Tangana, ${site.city}`,
     href: site.mapsUrl,
   },
   {
@@ -63,9 +63,9 @@ const socials = [
   { label: "Instagram", href: "https://www.instagram.com/zeisnetrwanda", Icon: InstagramIcon },
 ];
 
-const workingHours = [
+const workingHours: { days: string; hours: string; note?: string }[] = [
   { days: "Monday – Friday", hours: "9:00 AM – 6:00 PM" },
-  { days: "Saturday", hours: "9:30 AM – 5:00 PM", note: "Closed on Umuganda Saturdays" },
+  { days: "Saturday", hours: "9:30 AM – 5:00 PM" },
   { days: "Sunday", hours: "Closed" },
 ];
 
@@ -83,12 +83,12 @@ const faqs = [
   {
     question: "Do you offer on-site visits?",
     answer:
-      "Yes, throughout Kigali — by appointment. Call or message us to book a time, and we'll come to you; Ingabo and Indakangwa package clients get same-day appointments. Visits outside Kigali are arranged with transparent travel costs.",
+      "Yes, throughout Mombasa — by appointment. Call or message us to book a time, and we'll come to you; Ingabo and Indakangwa package clients get same-day appointments. Visits outside Mombasa are arranged with transparent travel costs.",
   },
   {
     question: "Can I just walk in with my laptop?",
     answer:
-      "Absolutely. We're on the 4th floor of Tropical Plaza on KN 82 Street, Monday to Saturday. Walk-ins are welcome for repairs, upgrades and diagnostics. Software issues are resolved while you wait; machines with power issues require a minimum of 24 hours.",
+      "Absolutely. We're on the 2nd floor of ECB Centre on Moi Avenue, Mombasa, Monday to Saturday. Walk-ins are welcome for repairs, upgrades and diagnostics. Software issues are resolved while you wait; machines with power issues require a minimum of 24 hours.",
   },
 ];
 
@@ -162,8 +162,8 @@ export default function ContactPage() {
                 style={delay(100)}
               >
                 <iframe
-                  title="Zeisnet office location — Tropical Plaza, KN 82 Street, Kigali"
-                  src="https://www.google.com/maps?q=Tropical+Plaza,+KN+82+Street,+Kigali,+Rwanda&output=embed"
+                  title="Zeisnet office location — ECB Centre, Moi Avenue, Mombasa"
+                  src="https://www.google.com/maps?q=ECB+Centre,+Moi+Avenue,+Tangana,+Mombasa,+Kenya&output=embed"
                   className="h-72 w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -171,8 +171,8 @@ export default function ContactPage() {
                 />
                 <div className="flex items-center justify-between gap-4 p-5">
                   <div>
-                    <p className="text-sm font-semibold text-night-900">Tropical Plaza, 4th Floor</p>
-                    <p className="text-xs text-slate-500">KN 82 Street, {site.city}</p>
+                    <p className="text-sm font-semibold text-night-900">ECB Centre, 2nd Floor</p>
+                    <p className="text-xs text-slate-500">Moi Avenue – Tangana, {site.city}</p>
                   </div>
                   <a
                     href={site.mapsUrl}
@@ -228,7 +228,7 @@ export default function ContactPage() {
               >
                 <h3 className="font-display text-lg font-bold">Follow along</h3>
                 <p className="mt-2 text-sm text-slate-400">
-                  Tech tips, security alerts and training announcements for Rwandan businesses.
+                  Tech tips, security alerts and training announcements for Kenyan businesses.
                 </p>
                 <ul className="mt-6 flex gap-3">
                   {socials.map(({ label, href, Icon }) => (

@@ -1,13 +1,10 @@
 /**
  * Genuine 5-star Google reviews for Zeisnet.
  *
- * Single source of truth: rendered as testimonials on the homepage AND
- * marked up as Review + AggregateRating structured data in `lib/seo.ts`.
- * Google requires review markup to reflect real reviews that are visible
- * on the site — every entry here is displayed on the homepage.
- *
- * When you add/remove a review, update NOTHING else: the aggregate rating
- * and review count in the LocalBusiness schema are derived automatically.
+ * Rendered as testimonials on the homepage. These are reviews of the Kigali
+ * office, so the Kenya site does NOT mark them up as Review/AggregateRating
+ * structured data (see the note in `lib/seo.ts`): Google requires review
+ * markup to describe the business the page is about.
  */
 export type Review = {
   /** Reviewer's name as shown on Google. */

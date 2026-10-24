@@ -5,11 +5,11 @@ import { Logo } from "./logo";
 import { LinkedinIcon, XIcon, FacebookIcon, InstagramIcon } from "./social-icons";
 
 const serviceLinks = [
+  { label: "Software Development", href: "/software-development" },
   { label: "IT Consulting", href: "/services#consulting" },
   { label: "Cloud Services", href: "/services#cloud" },
   { label: "Cybersecurity", href: "/services#cybersecurity" },
   { label: "Networking Solutions", href: "/services#networking" },
-  { label: "Software Development", href: "/services#software" },
   { label: "Technical Support", href: "/services#support" },
 ];
 
@@ -34,8 +34,8 @@ export function Footer() {
           <div className="space-y-5">
             <Logo tone="light" />
             <p className="max-w-xs text-sm leading-relaxed">
-              Your trusted technology partner — headquartered in Kigali, delivering software, IT, cloud
-              and cybersecurity to organisations across Africa and beyond.
+              Your trusted technology partner in Kenya — delivering software, IT, cloud and
+              cybersecurity to organisations across East Africa and beyond.
             </p>
             <ul className="flex gap-3">
               {socials.map(({ label, href, Icon }) => (
@@ -115,7 +115,10 @@ export function Footer() {
             © {new Date().getFullYear()} {site.legalName}. All rights reserved.
           </p>
           <p className="text-slate-500">
-            Built in Kigali · Serving clients across Africa &amp; beyond
+            Serving clients across Africa &amp; beyond · Also in{" "}
+            <a href={site.rwandaUrl} className="transition-colors hover:text-accent-300">
+              Kigali, Rwanda
+            </a>
           </p>
         </div>
       </div>

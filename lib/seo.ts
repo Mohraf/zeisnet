@@ -1,23 +1,36 @@
 import { site } from "./site";
-import { reviews, aggregateRatingValue, reviewCount } from "./reviews";
 
-export const SITE_URL = "https://zeisnet.com";
+export const SITE_URL = "https://zeisnet.co.ke";
 
-/** Approximate coordinates of Tropical Plaza, KN 82 Street, Kigali — verify before launch. */
-export const GEO = { latitude: -1.9496, longitude: 30.0603 };
+/** Approximate coordinates of ECB Centre, Moi Avenue, Mombasa — verify before launch. */
+export const GEO = { latitude: -4.0630, longitude: 39.6705 };
 
 export const absoluteUrl = (path = "/") => new URL(path, SITE_URL).toString();
+
+/**
+ * Canonical + hreflang for a page. The Kenya and Rwanda sites share their
+ * routes, so each page names its counterpart and Google shows zeisnet.co.ke
+ * to searchers in Kenya and zeisnet.com to searchers in Rwanda. Google only
+ * honours the pair once the Rwanda site carries the matching tags.
+ */
+export const pageAlternates = (path: string) => ({
+  canonical: path,
+  languages: {
+    "en-KE": absoluteUrl(path),
+    "en-RW": new URL(path, site.rwandaUrl).toString(),
+  },
+});
 
 /**
  * Verified profiles that represent the same business entity. `sameAs` links
  * help Google connect the website to the Google Business Profile and social
  * accounts — strengthening the knowledge panel and local ranking signals.
+ * The Rwanda-only X and Instagram accounts are left out so Google doesn't
+ * merge this branch with the Kigali one — add Kenya accounts here.
  */
 export const SAME_AS = [
   "https://www.linkedin.com/in/mack-otieno-82680769",
-  "https://x.com/zeisnetrw",
   "https://www.facebook.com/zeisnet",
-  "https://www.instagram.com/zeisnetrwanda",
 ];
 
 /* ------------------------------------------------------------------ */
@@ -27,7 +40,7 @@ export const SAME_AS = [
 /**
  * LocalBusiness + ProfessionalService — the core of local SEO.
  * Powers the Google Business/knowledge panel, "IT support near me"
- * queries and the Kigali map pack.
+ * queries and the Mombasa map pack.
  */
 export const localBusinessJsonLd = {
   "@context": "https://schema.org",
@@ -35,22 +48,22 @@ export const localBusinessJsonLd = {
   "@id": `${SITE_URL}/#business`,
   name: site.name,
   legalName: site.legalName,
-  alternateName: "Zeisnet Computing",
+  alternateName: ["Zeisnet Kenya", "Zeisnet Computing"],
   description:
-    "IT services and technology solutions company in Kigali, Rwanda — IT consulting, cloud services, cybersecurity, networking, software development, computer repair and digital skills training for businesses across Rwanda, East Africa and beyond.",
+    "IT services and technology solutions company in Mombasa, Kenya — IT consulting, cloud services, cybersecurity, networking, software development, computer repair and digital skills training for businesses across Kenya, East Africa and beyond.",
   url: SITE_URL,
   logo: absoluteUrl("/icon"),
   image: absoluteUrl("/opengraph-image"),
-  telephone: "+250787186250",
+  telephone: "+254722536771",
   email: site.email,
-  priceRange: "RWF 10,000 – 50,000 / month",
-  currenciesAccepted: "RWF",
+  priceRange: "KES 1,000 – 5,000 / month",
+  currenciesAccepted: "KES",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "KN 82 Street, Tropical Plaza Building, 4th Floor",
-    addressLocality: "Kigali",
-    addressRegion: "Kigali City",
-    addressCountry: "RW",
+    streetAddress: "ECB Centre, 2nd Floor, Moi Avenue, Tangana",
+    addressLocality: "Mombasa",
+    addressRegion: "Mombasa County",
+    addressCountry: "KE",
   },
   geo: {
     "@type": "GeoCoordinates",
@@ -73,41 +86,24 @@ export const localBusinessJsonLd = {
     },
   ],
   areaServed: [
-    { "@type": "City", name: "Kigali" },
-    { "@type": "Country", name: "Rwanda" },
+    { "@type": "City", name: "Mombasa" },
+    { "@type": "Country", name: "Kenya" },
     { "@type": "Place", name: "East Africa" },
     { "@type": "Place", name: "Africa" },
   ],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
-    telephone: "+250787186250",
+    telephone: "+254722536771",
     email: site.email,
-    areaServed: ["RW", "KE", "UG", "TZ", "BI", "CD"],
-    availableLanguage: ["English"],
+    areaServed: ["KE", "UG", "TZ", "RW", "BI", "CD"],
+    availableLanguage: ["English", "Swahili"],
   },
   sameAs: SAME_AS,
-  // Star ratings in search results. Derived from the genuine 5-star Google
-  // reviews shown on the homepage (see lib/reviews.ts) — must stay in sync
-  // with what visitors actually see, per Google's review-snippet policy.
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: aggregateRatingValue,
-    reviewCount,
-    bestRating: 5,
-    worstRating: 1,
-  },
-  review: reviews.map((r) => ({
-    "@type": "Review",
-    author: { "@type": "Person", name: r.name },
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: r.rating,
-      bestRating: 5,
-      worstRating: 1,
-    },
-    reviewBody: r.quote,
-  })),
+  // No aggregateRating/review here: the homepage testimonials are Google
+  // reviews of the Kigali office, and review markup must describe this
+  // business. Restore them (as on the Rwanda site) once the Kenya Google
+  // Business Profile has reviews and those are shown on the homepage.
 };
 
 export const organizationJsonLd = {
@@ -122,7 +118,7 @@ export const organizationJsonLd = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
-    telephone: "+250787186250",
+    telephone: "+254722536771",
     email: site.email,
   },
 };
@@ -166,7 +162,9 @@ export function faqJsonLd(faqs: { question: string; answer: string }[]) {
   };
 }
 
-export function servicesJsonLd(services: { title: string; description: string; id: string }[]) {
+export function servicesJsonLd(
+  services: { title: string; description: string; id: string; href?: string }[],
+) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -179,15 +177,64 @@ export function servicesJsonLd(services: { title: string; description: string; i
         name: s.title,
         serviceType: s.title,
         description: s.description,
-        url: absoluteUrl(`/services#${s.id}`),
+        // Practices with a dedicated landing page point there, so the page and
+        // the structured data agree on one canonical URL per service.
+        url: absoluteUrl(s.href ?? `/services#${s.id}`),
         provider: { "@id": `${SITE_URL}/#business` },
         areaServed: [
-          { "@type": "City", name: "Kigali" },
-          { "@type": "Country", name: "Rwanda" },
+          { "@type": "City", name: "Mombasa" },
+          { "@type": "Country", name: "Kenya" },
           { "@type": "Place", name: "East Africa" },
         ],
       },
     })),
+  };
+}
+
+/**
+ * Software development landing page — a single `Service` whose offer catalog
+ * lists the capability pillars. Gives Google one strong entity for
+ * "software development company Mombasa/Kenya" rather than a loose ItemList.
+ */
+export function softwareServiceJsonLd(capabilities: { title: string; description: string; id: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE_URL}/software-development/#service`,
+    name: "Custom Software Development",
+    serviceType: "Software Development",
+    description:
+      "Custom software development in Mombasa, Kenya — web applications and business systems, mobile apps, API integrations and workflow automation, and MVP product engineering for organisations across Kenya, East Africa and beyond.",
+    url: absoluteUrl("/software-development"),
+    provider: { "@id": `${SITE_URL}/#business` },
+    areaServed: [
+      { "@type": "City", name: "Mombasa" },
+      { "@type": "Country", name: "Kenya" },
+      { "@type": "Place", name: "East Africa" },
+      { "@type": "Place", name: "Africa" },
+    ],
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: absoluteUrl("/contact"),
+      servicePhone: "+254722536771",
+      serviceLocation: { "@id": `${SITE_URL}/#business` },
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Software Development Capabilities",
+      itemListElement: capabilities.map((capability, i) => ({
+        "@type": "Offer",
+        position: i + 1,
+        itemOffered: {
+          "@type": "Service",
+          name: capability.title,
+          serviceType: capability.title,
+          description: capability.description,
+          url: absoluteUrl(`/software-development#${capability.id}`),
+          provider: { "@id": `${SITE_URL}/#business` },
+        },
+      })),
+    },
   };
 }
 
@@ -200,7 +247,7 @@ export function coursesJsonLd(categories: { title: string; blurb: string; course
       cat.courses.map((course) => ({
         "@type": "Course",
         name: course,
-        description: `${cat.title} training in Kigali, Rwanda — ${cat.blurb}`,
+        description: `${cat.title} training in Mombasa, Kenya — ${cat.blurb}`,
         provider: { "@id": `${SITE_URL}/#business` },
         url: absoluteUrl("/capacity-building"),
         offers: {
@@ -211,7 +258,7 @@ export function coursesJsonLd(categories: { title: string; blurb: string; course
         hasCourseInstance: {
           "@type": "CourseInstance",
           courseMode: ["Onsite", "Online"],
-          location: { "@type": "Place", name: "Kigali, Rwanda" },
+          location: { "@type": "Place", name: "Mombasa, Kenya" },
         },
       })),
     ),
@@ -229,11 +276,11 @@ export function packagesJsonLd(plans: { name: string; price: string; audience: s
       name: `${plan.name} Plan`,
       description: `Monthly IT support package for ${plan.audience.toLowerCase()} — ${plan.features.join(", ")}.`,
       price: plan.price.replace(",", ""),
-      priceCurrency: "RWF",
+      priceCurrency: "KES",
       url: absoluteUrl("/packages"),
       availability: "https://schema.org/InStock",
       offeredBy: { "@id": `${SITE_URL}/#business` },
-      eligibleRegion: { "@type": "Country", name: "Rwanda" },
+      eligibleRegion: { "@type": "Country", name: "Kenya" },
     })),
   };
 }

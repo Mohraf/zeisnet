@@ -46,14 +46,14 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   aria-current={active ? "page" : undefined}
-                  className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+                  className={`relative whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 xl:px-4 ${
                     active ? "text-brand-700" : "text-slate-600 hover:text-night-900"
                   }`}
                 >
                   {link.label}
                   {active && (
                     <span
-                      className="absolute inset-x-4 -bottom-1 h-0.5 rounded-full bg-brand-500"
+                      className="absolute inset-x-3 -bottom-1 h-0.5 rounded-full bg-brand-500 xl:inset-x-4"
                       aria-hidden
                     />
                   )}

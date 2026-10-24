@@ -6,7 +6,7 @@ import { RevealObserver } from "@/components/reveal";
 import { SiteMotion } from "@/components/site-motion";
 import { WhatsappButton } from "@/components/whatsapp-button";
 import { JsonLd } from "@/components/json-ld";
-import { SITE_URL, GEO, localBusinessJsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { SITE_URL, GEO, pageAlternates, localBusinessJsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,25 +23,32 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  applicationName: "Zeisnet",
+  applicationName: "Zeisnet Kenya",
   title: {
-    default: "Zeisnet — Software Development & IT Services · Kigali & Worldwide",
-    template: "%s | Zeisnet",
+    default: "Zeisnet Kenya — Software Development & IT Services · Kenya & Worldwide",
+    template: "%s | Zeisnet Kenya",
   },
   description:
-    "Zeisnet is a leading IT services company in Kigali, Rwanda — IT consulting, cloud services, cybersecurity, networking, software development, computer repair and digital skills training for businesses across Rwanda, East Africa and the world.",
+    "Zeisnet Kenya is an IT services and software development company in Mombasa — IT consulting, cloud services, cybersecurity, networking, software development, computer repair and digital skills training for businesses across Kenya, East Africa and the world.",
   keywords: [
-    // Kigali & Rwanda first
-    "IT services Kigali",
-    "IT company Kigali",
-    "IT support Rwanda",
-    "computer repair Kigali",
-    "cybersecurity Rwanda",
-    "cloud services Rwanda",
-    "Microsoft 365 Rwanda",
-    "network installation Kigali",
-    "IT training Kigali",
-    "capacity building Rwanda",
+    // Software development — the practice we lead with
+    "software development Mombasa",
+    "software development company Kenya",
+    "custom software Kenya",
+    "web application development Mombasa",
+    "mobile app development Kenya",
+    // Mombasa & Kenya
+    "IT services Mombasa",
+    "IT company Mombasa",
+    "IT support Kenya",
+    "computer repair Mombasa",
+    "laptop repair Mombasa",
+    "cybersecurity Kenya",
+    "cloud services Kenya",
+    "Microsoft 365 Kenya",
+    "network installation Mombasa",
+    "IT training Mombasa",
+    "capacity building Kenya",
     // East Africa & Africa
     "IT services East Africa",
     "managed IT services Africa",
@@ -55,9 +62,7 @@ export const metadata: Metadata = {
   creator: "Zeisnet",
   publisher: "Zeisnet Computing Ltd",
   category: "Information Technology",
-  alternates: {
-    canonical: "/",
-  },
+  alternates: pageAlternates("/"),
   robots: {
     index: true,
     follow: true,
@@ -72,17 +77,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "Zeisnet",
-    locale: "en_US",
-    title: "Zeisnet — Software Development & IT Services · Kigali & Worldwide",
+    siteName: "Zeisnet Kenya",
+    locale: "en_KE",
+    title: "Zeisnet Kenya — Software Development & IT Services · Kenya & Worldwide",
     description:
-      "Software development, IT consulting, cloud, cybersecurity, networking, repairs and digital skills training for organisations in Rwanda, across Africa and beyond.",
+      "Software development, IT consulting, cloud, cybersecurity, networking, repairs and digital skills training for organisations in Kenya, across Africa and beyond.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zeisnet — Software Development & IT Services · Kigali & Worldwide",
+    title: "Zeisnet Kenya — Software Development & IT Services · Kenya & Worldwide",
     description:
-      "Software development, IT consulting, cloud, cybersecurity, networking, repairs and digital skills training for organisations in Rwanda, across Africa and beyond.",
+      "Software development, IT consulting, cloud, cybersecurity, networking, repairs and digital skills training for organisations in Kenya, across Africa and beyond.",
   },
   formatDetection: {
     telephone: true,
@@ -91,13 +96,13 @@ export const metadata: Metadata = {
   },
   other: {
     // Geo-targeting meta tags for local search
-    "geo.region": "RW-01",
-    "geo.placename": "Kigali",
+    "geo.region": "KE-28",
+    "geo.placename": "Mombasa",
     "geo.position": `${GEO.latitude};${GEO.longitude}`,
     ICBM: `${GEO.latitude}, ${GEO.longitude}`,
   },
   // To verify the site in Google Search Console (needed to submit the sitemap
-  // and monitor Kigali/Rwanda rankings): register the property at
+  // and monitor Mombasa/Kenya rankings): register the property at
   // https://search.google.com/search-console, copy the HTML-tag token, paste
   // it below and uncomment. Same for Bing Webmaster Tools if desired.
   // verification: { google: "PASTE_SEARCH_CONSOLE_TOKEN_HERE" },
@@ -105,7 +110,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en-KE" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body>
         <a
           href="#main"

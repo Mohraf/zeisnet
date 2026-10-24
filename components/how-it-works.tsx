@@ -12,6 +12,10 @@ import {
   Presentation,
   BadgeCheck,
   CheckCircle2,
+  PenTool,
+  Code2,
+  Rocket,
+  RefreshCw,
 } from "lucide-react";
 import { SectionHeading } from "./ui/section-heading";
 
@@ -29,6 +33,11 @@ const iconRegistry: Record<string, LucideIcon> = {
   curriculum: Puzzle,
   train: Presentation,
   certify: BadgeCheck,
+  // Software delivery lifecycle (software development page)
+  design: PenTool,
+  build: Code2,
+  launch: Rocket,
+  iterate: RefreshCw,
 };
 
 export type HowItWorksStep = {
@@ -61,7 +70,7 @@ const defaultSteps: HowItWorksStep[] = [
     icon: "deploy",
     title: "Deploy",
     description:
-      "Certified engineers implement with minimal disruption to your day-to-day. On-site in Kigali or remotely, whatever suits you.",
+      "Certified engineers implement with minimal disruption to your day-to-day. On-site in Mombasa or remotely, whatever suits you.",
     points: ["Certified engineers", "Minimal downtime"],
   },
   {
