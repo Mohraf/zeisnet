@@ -18,7 +18,7 @@ upload, run:
 powershell -File scripts\make-zip.ps1
 ```
 
-which creates `zeisnet-site.zip` in the project root.
+which creates `zeisnet-kenya-site.zip` in the project root.
 
 > **Always use this script, not right-click → "Compress" or PowerShell's
 > `Compress-Archive`** — those write Windows-style paths inside the zip,
@@ -29,7 +29,7 @@ which creates `zeisnet-site.zip` in the project root.
 
 1. Log in to cPanel → **File Manager**.
 2. Open **`public_html`** (delete or move away any old site files first).
-3. Click **Upload** and upload `zeisnet-site.zip`.
+3. Click **Upload** and upload `zeisnet-kenya-site.zip`.
 4. Back in File Manager, right-click the zip → **Extract** into `public_html`.
 5. Delete the zip after extraction.
 
